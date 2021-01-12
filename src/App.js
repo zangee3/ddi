@@ -10,10 +10,15 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <DNSOptions />
-        <CNameOptions />
-        <TxtOptions />
-        <MXOptions />
+        <div className="row">
+          <div className="col-md-3">Navigation Items</div>
+          <div className="col-md-9">
+            <DNSOptions/>
+            <CNameOptions/>
+            <TxtOptions/>
+            <MXOptions/>
+          </div>
+        </div>
       </div>
     </div>
   );
