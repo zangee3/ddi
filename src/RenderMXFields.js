@@ -5,18 +5,18 @@ const FieldRows = (props) => {
   return (
     <div className="form-row">
       <div className="form-group col-md-6">
-        <label>Hostname {val}:</label>
+        <label>Host {val}:</label>
         <input type="text" className="form-control" placeholder=""/>
       </div>
       <div className="form-group col-md-6">
-        <label>IP Address {val}:</label>
+        <label>Domain {val}:</label>
         <input type="text" className="form-control" placeholder=""/>
       </div>
     </div>
   )
 };
 
-function RenderFields(props) {
+function RenderMXFields(props) {
 
   const { value } = props;
   const val = value && parseInt(value);
@@ -31,4 +31,4 @@ function RenderFields(props) {
   )
 };
 
-export default RenderFields;
+export default RenderMXFields;

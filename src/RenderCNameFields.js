@@ -9,14 +9,14 @@ const FieldRows = (props) => {
         <input type="text" className="form-control" placeholder=""/>
       </div>
       <div className="form-group col-md-6">
-        <label>IP Address {val}:</label>
+        <label>Target A Record {val}:</label>
         <input type="text" className="form-control" placeholder=""/>
       </div>
     </div>
   )
 };
 
-function RenderFields(props) {
+function RenderCNameFields(props) {
 
   const { value } = props;
   const val = value && parseInt(value);
@@ -31,4 +31,4 @@ function RenderFields(props) {
   )
 };
 
-export default RenderFields;
+export default RenderCNameFields;

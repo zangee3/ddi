@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .App-logo {
@@ -23,6 +23,18 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+/*.container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  border: 10px solid goldenrod;
+  justify-content: center;
+  align-items: center;
+  !*align-content: center;*!
+  flex-wrap: wrap;
+  !*align-items: flex-start;*!
+  !*flex-wrap: wrap;*!
+}*/
 
 .App-link {
   color: #61dafb;

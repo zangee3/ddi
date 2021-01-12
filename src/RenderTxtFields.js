@@ -5,18 +5,18 @@ const FieldRows = (props) => {
   return (
     <div className="form-row">
       <div className="form-group col-md-6">
-        <label>Hostname {val}:</label>
+        <label>Owner {val}:</label>
         <input type="text" className="form-control" placeholder=""/>
       </div>
       <div className="form-group col-md-6">
-        <label>IP Address {val}:</label>
+        <label>Attribute {val}:</label>
         <input type="text" className="form-control" placeholder=""/>
       </div>
     </div>
   )
 };
 
-function RenderFields(props) {
+function RenderTxtFields(props) {
 
   const { value } = props;
   const val = value && parseInt(value);
@@ -31,4 +31,4 @@ function RenderFields(props) {
   )
 };
 
-export default RenderFields;
+export default RenderTxtFields;
