@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import RenderFields from "./RenderFields";
 
 class DNSOptions extends React.Component {
@@ -18,7 +18,7 @@ class DNSOptions extends React.Component {
 
   handleSubmit(event) {
     const { value } = this.state;
-    alert('Your Selected Number of DNS Entries are: ' + value);
+    alert("Your Selected Number of DNS Entries are: " + value);
     event.preventDefault();
   }
 
@@ -29,9 +29,16 @@ class DNSOptions extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <h6>A Records</h6>
           <div className="form-group">
-            <label htmlFor="exampleFormControlSelect2">Select quantity of A Records</label>
-            <select value={value} onChange={this.handleChange} className="form-control" id="exampleFormControlSelect2">
-              <option value="0"></option>
+            <label htmlFor="exampleFormControlSelect2">
+              Select quantity of A Records
+            </label>
+            <select
+              value={value}
+              onChange={this.handleChange}
+              className="form-control"
+              id="exampleFormControlSelect2"
+            >
+              <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -39,9 +46,7 @@ class DNSOptions extends React.Component {
               <option value="5">5</option>
             </select>
           </div>
-          {
-            value ? <RenderFields value={value}/> : null
-          }
+          {value ? <RenderFields value={value} /> : null}
           {/*<button type="submit" className="btn btn-primary">Submit</button>*/}
         </form>
       </div>

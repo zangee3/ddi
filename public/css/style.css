@@ -1,0 +1,218 @@
+.App {
+  /*text-align: center;*/
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+/*.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    border: 10px solid goldenrod;
+    justify-content: center;
+    align-items: center;
+    !*align-content: center;*!
+    flex-wrap: wrap;
+    !*align-items: flex-start;*!
+    !*flex-wrap: wrap;*!
+  }*/
+
+.App-link {
+  color: #61dafb;
+}
+.m-bottom {
+  margin-bottom: 40px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.navigation .nav {
+  display: block;
+}
+
+.navigation {
+  background: #0093ff;
+  padding: 0 !important;
+}
+
+.navigation a.nav-link {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+}
+.navigation a.nav-link:hover,
+.navigation a.nav-link.active {
+  background: #404040;
+}
+.form-sec {
+  background: #f7f7f7;
+  padding: 40px;
+}
+.form-sec {
+  background: #f9f9f9;
+  padding: 40px;
+}
+.form-sec h6 {
+  color: #0093ff;
+  font-size: 28px;
+  margin: 0 0 15px 0px;
+  text-transform: uppercase;
+}
+.form-sec .form-group .form-control {
+  display: inline-block;
+  vertical-align: middle;
+  background: none;
+  border-radius: 0px;
+  border-color: #ddd;
+  background: #fff;
+}
+.form-sec .form-group label {
+  vertical-align: middle;
+  margin: 0 15px 0px 0px;
+  padding: 0;
+  line-height: normal;
+  color: #000;
+  font-size: 15px;
+}
+.form-sec .m-bottom {
+  border-bottom: 1px solid #e8e8e8;
+  margin: 0 0 15px;
+  padding: 0 0 15px;
+}
+.form-sec .form-group select.form-control {
+  width: 18%;
+  padding: 0 0 0 10px;
+}
+.form-sec .form-group input[type="text"]:focus,
+.form-sec .form-group input[type="password"]:focus,
+.form-sec .form-group select:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #0093ff;
+}
+.form-sec .form-row .form-group label {
+  margin: 0 0 8px;
+}
+.nav-toggle-col span {
+  background: #0093ff;
+  height: 3px;
+  display: block;
+  width: 25px;
+  margin: 0 0 4px 0px;
+}
+.nav-toggle-col {
+  text-align: right;
+  float: right;
+  margin: 25px 15px 15px 15px;
+}
+.clear {
+  clear: both;
+}
+.nav-toggle-col {
+  display: none;
+}
+
+.login-form-sec-outer {
+  background: #0093ff;
+  padding: 30px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.login-form.login-form-sec {
+  background: #fff;
+  width: 500px;
+  margin: auto;
+  padding: 30px;
+  align-items: center;
+}
+
+.login-form.login-form-sec input[type="email"],
+.login-form.login-form-sec input[type="password"] {
+  border-radius: 0px;
+  width: 100%;
+}
+
+.login-form-sec button[type="submit"] {
+  background: #0093ff;
+  border-radius: 0;
+  font-size: 18px;
+  text-transform: uppercase;
+  width: 140px;
+}
+
+.login-form.login-form-sec input[type="email"]:focus,
+.login-form.login-form-sec input[type="password"]:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #0093ff;
+}
+
+.login-form-sec-inner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.login-form.login-form-sec label {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 767px) {
+  .navigation.inactive {
+    visibility: hidden; /* hides sub-menu */
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transform: translateY(0em);
+    z-index: -1;
+    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s,
+      z-index 0s linear 0.01s;
+  }
+  .navigation.active {
+    visibility: visible; /* shows sub-menu */
+    opacity: 1;
+    z-index: 1;
+    transform: translateY(0%);
+    transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+  }
+  .nav-toggle-col {
+    display: block;
+  }
+
+  .login-form.login-form-sec {
+    width: 80%;
+  }
+}
