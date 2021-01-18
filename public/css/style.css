@@ -74,7 +74,8 @@
 }
 .navigation a.nav-link:hover,
 .navigation a.nav-link.active {
-  background: #404040;
+  background: #404040 !important;
+  border-radius: 0;
 }
 .form-sec {
   background: #f7f7f7;
@@ -106,11 +107,7 @@
   color: #000;
   font-size: 15px;
 }
-.form-sec .m-bottom {
-  border-bottom: 1px solid #e8e8e8;
-  margin: 0 0 15px;
-  padding: 0 0 15px;
-}
+
 .form-sec .form-group select.form-control {
   width: 18%;
   padding: 0 0 0 10px;
@@ -212,7 +209,7 @@
 
 
 .tab-container .nav-tabs .nav-link:hover, .tab-container .nav-tabs .nav-link:focus{ border:none;}
-.tab-container .tab-content{ padding-left:15px; padding-right:15px;background: #f9f9f9;}
+.tab-container .tab-content{ padding-left:15px; padding-right:15px;}
 
 .tab-container .nav-tabs .nav-link{border:none; color:#fff; font-size: 16px;
   text-transform: uppercase;}
@@ -221,6 +218,23 @@
     font-size: 16px;
    
 }
+
+.tab-content .row {
+  display: block;
+}
+
+.tab-content .row .navigation {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.tab-content .row .form-sec {
+  display: inline-block;
+  vertical-align: top;
+  padding-bottom: 0;
+  min-height: 500px;
+}
+
 @media only screen and (max-width: 1024px) {
 .navigation a.nav-link:hover {
   background: none;
@@ -270,5 +284,10 @@
 .tab-container.inactive nav.nav.nav-tabs {
   display: none;
 }
+.tab-content .row .form-sec{min-height: 300px;  padding: 15px 0px;}
 
 }
+@media only screen and (max-width: 767px) and (orientation : landscape){ 
+  .tab-content .row .form-sec{min-height: 100%;}
+}
+
