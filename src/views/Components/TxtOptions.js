@@ -1,7 +1,7 @@
-import React from 'react';
-import RenderCNameFields from "./RenderCNameFields";
+import React from "react";
+import RenderTxtFields from "./RenderTxtFields";
 
-class CNameOptions extends React.Component {
+class TxtOptions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +18,7 @@ class CNameOptions extends React.Component {
 
   handleSubmit(event) {
     const { value } = this.state;
-    alert('Your Selected Number of DNS Entries are: ' + value);
+    alert("Your Selected Number of DNS Entries are: " + value);
     event.preventDefault();
   }
 
@@ -27,11 +27,18 @@ class CNameOptions extends React.Component {
     return (
       <div className="m-bottom">
         <form onSubmit={this.handleSubmit}>
-          <h6>CNAME Records</h6>
+          <h6>TXT Records</h6>
           <div className="form-group">
-            <label htmlFor="exampleFormControlSelect2">Select quantity of CNAME Records</label>
-            <select value={value} onChange={this.handleChange} className="form-control" id="exampleFormControlSelect2">
-              <option value="0"></option>
+            <label htmlFor="exampleFormControlSelect2">
+              Select quantity of TXT Records
+            </label>
+            <select
+              value={value}
+              onChange={this.handleChange}
+              className="form-control"
+              id="exampleFormControlSelect2"
+            >
+              <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -39,9 +46,7 @@ class CNameOptions extends React.Component {
               <option value="5">5</option>
             </select>
           </div>
-          {
-            value ? <RenderCNameFields value={value}/> : null
-          }
+          {value ? <RenderTxtFields value={value} /> : null}
           {/*<button type="submit" className="btn btn-primary">Submit</button>*/}
         </form>
       </div>
@@ -49,4 +54,4 @@ class CNameOptions extends React.Component {
   }
 }
 
-export default CNameOptions;
+export default TxtOptions;
