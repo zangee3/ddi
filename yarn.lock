@@ -2684,9 +2684,9 @@ babel-preset-react-app@^10.0.0:
     babel-plugin-macros "2.8.0"
     babel-plugin-transform-react-remove-prop-types "0.4.24"
 
-babel-runtime@^6.26.0:
+babel-runtime@^6.23.0, babel-runtime@^6.26.0:
   version "6.26.0"
-  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz"
+  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
   dependencies:
     core-js "^2.4.0"
@@ -9035,6 +9035,14 @@ react-app-polyfill@^2.0.0:
     raf "^3.4.1"
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
+
+react-bootstrap-tabs@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-tabs/-/react-bootstrap-tabs-2.0.0.tgz#9269258217c6b5292acd77e9f5cecb4020951cd3"
+  integrity sha512-CnAKLf2xWPpPEU21Yn/Syi1rsh/ccutbCO89QqM+0+aoPK2rAXSiB1lzZ60xe8C8HNRQGlThrAY5x/zow1jlRQ==
+  dependencies:
+    babel-runtime "^6.23.0"
+    classnames "^2.2.6"
 
 react-bootstrap@^1.4.3:
   version "1.4.3"
