@@ -45,9 +45,15 @@
 
 @keyframes App-logo-spin {
   from {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
@@ -63,12 +69,13 @@
 
 .navigation a.nav-link {
   color: #fff;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
 }
 .navigation a.nav-link:hover,
 .navigation a.nav-link.active {
-  background: #404040;
+  background: #404040 !important;
+  border-radius: 0;
 }
 .form-sec {
   background: #f7f7f7;
@@ -80,8 +87,8 @@
 }
 .form-sec h6 {
   color: #0093ff;
-  font-size: 28px;
-  margin: 0 0 15px 0px;
+  font-size: 20px;
+  margin: 0 0 10px 0px;
   text-transform: uppercase;
 }
 .form-sec .form-group .form-control {
@@ -100,11 +107,7 @@
   color: #000;
   font-size: 15px;
 }
-.form-sec .m-bottom {
-  border-bottom: 1px solid #e8e8e8;
-  margin: 0 0 15px;
-  padding: 0 0 15px;
-}
+
 .form-sec .form-group select.form-control {
   width: 18%;
   padding: 0 0 0 10px;
@@ -180,6 +183,9 @@
   left: 0;
   right: 0;
   top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
@@ -188,6 +194,52 @@
   font-weight: 500;
 }
 
+/*tab css start here*/
+.tab-container nav-tabs {
+  background: #0093ff;
+}
+
+.tab-container nav.nav.nav-tabs {
+  background: #474747;
+  border: none;
+  margin: 0 0 8px 0;
+}
+
+.tab-container .nav-tabs .nav-link.active, .tab-container .nav-tabs .nav-item.show .nav-link{border-radius:0px;background:#ccc;border: none;margin: 0;color: #0093ff;}
+
+
+.tab-container .nav-tabs .nav-link:hover, .tab-container .nav-tabs .nav-link:focus{ border:none;}
+.tab-container .tab-content{ padding-left:15px; padding-right:15px;}
+
+.tab-container .nav-tabs .nav-link{border:none; color:#fff; font-size: 16px;
+  text-transform: uppercase;}
+
+  .tab-content p {
+    font-size: 16px;
+   
+}
+
+.tab-content .row {
+  display: block;
+}
+
+.tab-content .row .navigation {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.tab-content .row .form-sec {
+  display: inline-block;
+  vertical-align: top;
+  padding-bottom: 0;
+  min-height: 500px;
+}
+
+@media only screen and (max-width: 1024px) {
+.navigation a.nav-link:hover {
+  background: none;
+}
+}
 @media only screen and (max-width: 767px) {
   .navigation.inactive {
     visibility: hidden; /* hides sub-menu */
@@ -196,6 +248,9 @@
     top: 100%;
     left: 0;
     width: 100%;
+    -webkit-transform: translateY(0em);
+    -ms-transform: translateY(0em);
+    -moz-transform: translateY(0em);
     transform: translateY(0em);
     z-index: -1;
     transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s,
@@ -205,6 +260,9 @@
     visibility: visible; /* shows sub-menu */
     opacity: 1;
     z-index: 1;
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    -moz-transform: translateY(0%);
     transform: translateY(0%);
     transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
   }
@@ -215,4 +273,21 @@
   .login-form.login-form-sec {
     width: 80%;
   }
+  .tab-container .nav-tabs .nav-link {
+    width: 100%;
+    border-bottom: 1px solid #404040;
 }
+
+.tab-container .nav-tabs .nav-link:last-child {
+    border-bottom: none;
+}
+.tab-container.inactive nav.nav.nav-tabs {
+  display: none;
+}
+.tab-content .row .form-sec{min-height: 300px;  padding: 15px 0px;}
+
+}
+@media only screen and (max-width: 767px) and (orientation : landscape){ 
+  .tab-content .row .form-sec{min-height: 100%;}
+}
+
