@@ -1,7 +1,7 @@
 import React from "react";
-import RenderMXFields from "./RenderMXFields";
+import RenderTxtFields from "./RenderTxtFields";
 
-class MXOptions extends React.Component {
+class HostRecords extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,14 +24,13 @@ class MXOptions extends React.Component {
 
   render() {
     const { value } = this.state;
-    console.log(value);
     return (
       <div className="m-bottom">
         <form onSubmit={this.handleSubmit}>
-          <h6>MX Records</h6>
+          <h6>Hostname</h6>
           <div className="form-group">
             <label htmlFor="exampleFormControlSelect2">
-              Select quantity of TXT Records
+            Select quantity of IPs number
             </label>
             <select
               value={value}
@@ -43,10 +42,9 @@ class MXOptions extends React.Component {
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
-              <option value="5">5</option>
             </select>
           </div>
-          {value ? <RenderMXFields value={value} /> : null}
+          {value ? <RenderTxtFields value={value} /> : null}
           {/*<button type="submit" className="btn btn-primary">Submit</button>*/}
         </form>
       </div>
@@ -54,4 +52,4 @@ class MXOptions extends React.Component {
   }
 }
 
-export default MXOptions;
+export default HostRecords;
