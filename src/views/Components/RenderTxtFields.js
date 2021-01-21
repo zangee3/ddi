@@ -5,11 +5,7 @@ const FieldRows = (props) => {
   return (
     <div className="form-row">
       <div className="form-group col-md-6">
-        <label>Owner {val}:</label>
-        <input type="text" className="form-control" placeholder=""/>
-      </div>
-      <div className="form-group col-md-6">
-        <label>Attribute {val}:</label>
+        <label>IP {val}:</label>
         <input type="text" className="form-control" placeholder=""/>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { LOGIN_FAILED, LOGIN_SUCCESS } from "./type";
+import { LOGIN_FAILED, LOGIN_SUCCESS ,LOGOUT} from "./type";
 
 const loginData = {
   userName: "admin@gmail.com",
@@ -14,10 +14,18 @@ export const login = data => async dispatch => {
       payload: data
     });
 
-    window.location.href = "/dns/setting";
+    window.location.href = "/home";
   } else {
     dispatch({
       type: LOGIN_FAILED
     });
   }
 };
+
+
+export const logout=()=>async dispatch=>{
+  dispatch({
+    type:LOGOUT
+  })
+}
+
