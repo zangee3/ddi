@@ -8,7 +8,7 @@ import { Switch, BrowserRouter, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import ProtectedRoute from "./routing/ProtectedRoute";
 import "./App.css";
-import DnsSetting from "./views/Pages/PrivatePages/DnsSetting/DnsSetting";
+import DnsSetting from "./views/Pages/PrivatePages/DnsSetting";
 import DefaultLayout from "./containers/PrivateLayouts/TheLayout";
 import Login from "./views/Pages/PublicPages/Login/Login";
 const loading = () => (

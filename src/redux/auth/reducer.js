@@ -1,4 +1,4 @@
-import { LOGIN_FAILED, LOGIN_SUCCESS } from "./type";
+import { LOGIN_FAILED, LOGIN_SUCCESS,LOGOUT } from "./type";
 
 const token = "qwertyuiopkjbkjbibbbkhb";
 const initialState = {
@@ -22,6 +22,12 @@ export default (state = initialState, action) => {
         ...state,
         isAuth: false
       };
+      case LOGOUT:
+        localStorage.removeItem('token')
+        return{
+          ...state,
+          isAuth:false
+        }
     default:
       return {
         ...state

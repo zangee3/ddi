@@ -4,6 +4,9 @@ import { useForm } from "react-hook-form";
 import { login } from "../../../../redux/auth/action";
 import { useDispatch, useSelector } from "react-redux";
 
+
+
+
 const Login = () => {
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth.isAuth);
@@ -23,6 +26,10 @@ const Login = () => {
     <div className="login-form-sec-outer">
       <div className="login-form-sec-inner">
         <div className="login-form login-form-sec">
+          <div className="social-icon">
+          Facebook
+        
+          </div>
           <form
             className="mb-4"
             onSubmit={handleSubmit(loginUser)}
