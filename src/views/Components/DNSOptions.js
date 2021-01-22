@@ -30,7 +30,7 @@ class DNSOptions extends React.Component {
           <h6>A Records</h6>
           <div className="form-group">
             <label htmlFor="exampleFormControlSelect2">
-              Select quantity of A Records
+              Number of A Records
             </label>
             <select
               value={value}

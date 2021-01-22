@@ -29,20 +29,28 @@ class HostRecords extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <h6>Hostname</h6>
           <div className="form-group">
-            <label htmlFor="exampleFormControlSelect2">
-            Select quantity of IPs number
-            </label>
-            <select
-              value={value}
-              onChange={this.handleChange}
-              className="form-control"
-              id="exampleFormControlSelect2"
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
+            <div className="form-row">
+              <div className=" col-md-6">
+              <label>Hostname</label>
+              <input type="text" className="form-control" name="hostname"/>
+              </div>
+              <div className=" col-md-6">
+              <label htmlFor="exampleFormControlSelect2">
+              Number of IPs
+              </label>
+              <select
+                value={value}
+                onChange={this.handleChange}
+                className="form-control"
+                id="exampleFormControlSelect2"
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+              </div>
+            </div>
           </div>
           {value ? <RenderTxtFields value={value} /> : null}
           {/*<button type="submit" className="btn btn-primary">Submit</button>*/}

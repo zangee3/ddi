@@ -30,7 +30,7 @@ class CNameOptions extends React.Component {
           <h6>CNAME Records</h6>
           <div className="form-group">
             <label htmlFor="exampleFormControlSelect2">
-              Select quantity of CNAME Records
+              Number of CNAME Records
             </label>
             <select
               value={value}

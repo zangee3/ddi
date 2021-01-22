@@ -31,7 +31,7 @@ class MXOptions extends React.Component {
           <h6>MX Records</h6>
           <div className="form-group">
             <label htmlFor="exampleFormControlSelect2">
-              Select quantity of TXT Records
+              Number of TXT Records
             </label>
             <select
               value={value}
