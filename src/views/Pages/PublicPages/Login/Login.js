@@ -3,10 +3,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { login } from "../../../../redux/auth/action";
 import { useDispatch, useSelector } from "react-redux";
-
-
-
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook} from "@fortawesome/free-brands-svg-icons";
 const Login = () => {
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth.isAuth);
@@ -27,8 +25,8 @@ const Login = () => {
       <div className="login-form-sec-inner">
         <div className="login-form login-form-sec">
           <div className="social-icon">
-          Facebook
-        
+          <button><FontAwesomeIcon icon={faFacebook} /></button>
+          
           </div>
           <form
             className="mb-4"
