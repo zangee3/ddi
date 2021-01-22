@@ -30,7 +30,7 @@ class TxtOptions extends React.Component {
           <h6>TXT Records</h6>
           <div className="form-group">
             <label htmlFor="exampleFormControlSelect2">
-              Select quantity of TXT Records
+              Select quantity of TXT Records2
             </label>
             <select
               value={value}

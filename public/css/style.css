@@ -266,6 +266,28 @@ button.logout-btn{ position: absolute;
   text-transform: uppercase;
   padding: 10px 15px;}
 
+  .social-icon button {
+    color: #0093ff;
+    font-size: 30px;
+    margin: 0px 10px 0px 0px;
+    border: none;
+    outline: 0;
+    background: none;
+}
+.social-icon {
+  margin: 0 0 15px 0px;
+}
+.login-form.login-form-sec .form-check {
+  margin: 0 0 10px 0px;
+}
+
+.login-form.login-form-sec .form-check input[type="checkbox"] {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 0.5rem;
+  padding: 0;
+}
+
 @media only screen and (max-width: 1024px) {
 .navigation a.nav-link:hover {
   background: none;
