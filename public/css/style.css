@@ -1,378 +1,412 @@
 .App {
-  /*text-align: center;*/
+	/*text-align: center;*/
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+	height: 40vmin;
+	pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
-
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 .m-bottom {
-  margin-bottom: 40px;
+	margin-bottom: 40px;
 }
 
 @keyframes App-logo-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
+	from {
+		-webkit-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
 }
 
 .navigation .bg-light {
-  background: #404040 !important;
-    padding: 0;
-    margin: 0 0 15px 0px;
+	background: #404040 !important;
+	padding: 0;
+	margin: 0 0 15px 0px;
 }
 
 .navigation .bg-light .navbar-nav .nav-link {
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 16px;
-  padding: 10px 25px;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 16px;
+	padding: 10px 25px;
 }
 
 .navigation .bg-light .navbar-nav a.nav-link:hover,
 .navigation .bg-light .navbar-nav a.nav-link.active {
-  background: #007bff !important;
-  border-radius: 0;
-  color:#fff;
+	background: #007bff !important;
+	border-radius: 0;
+	color: #fff;
 }
 .form-sec {
-  background: #f7f7f7;
-  padding: 40px;
+	background: #f7f7f7;
+	padding: 40px;
 }
 
 .form-sec h6 {
-  color: #0093ff;
-  font-size: 20px;
-  margin: 0 0 10px 0px;
-  text-transform: uppercase;
+	color: #0093ff;
+	font-size: 20px;
+	margin: 0 0 10px 0px;
+	text-transform: uppercase;
 }
 
 .form-sec .form-group .form-control {
-  display: inline-block;
-  vertical-align: middle;
-  background: none;
-  border-radius: 0px;
-  border-color: #ddd;
-  background: #fff;
+	display: inline-block;
+	vertical-align: middle;
+	background: none;
+	border-radius: 0px;
+	border-color: #ddd;
+	background: #fff;
 }
 .form-sec .form-group label {
-  vertical-align: middle;
-  margin: 0 15px 0px 0px;
-  padding: 0;
-  line-height: normal;
-  color: #000;
-  font-size: 15px;
+	vertical-align: middle;
+	margin: 0 15px 0px 0px;
+	padding: 0;
+	line-height: normal;
+	color: #000;
+	font-size: 15px;
 }
 
 .form-sec .form-group select.form-control {
-  width: 18%;
-  padding: 0 0 0 10px;
+	width: 18%;
+	padding: 0 0 0 10px;
 }
-.form-sec .form-group input[type="text"]:focus,
-.form-sec .form-group input[type="password"]:focus,
+.form-sec .form-group input[type='text']:focus,
+.form-sec .form-group input[type='password']:focus,
 .form-sec .form-group select:focus {
-  outline: none;
-  box-shadow: none;
-  border-color: #0093ff;
+	outline: none;
+	box-shadow: none;
+	border-color: #0093ff;
 }
 .form-sec .form-row .form-group label {
-  margin: 0 0 8px;
+	margin: 0 0 8px;
 }
 .nav-toggle-col span {
-  background: #0093ff;
-  height: 3px;
-  display: block;
-  width: 25px;
-  margin: 0 0 4px 0px;
+	background: #0093ff;
+	height: 3px;
+	display: block;
+	width: 25px;
+	margin: 0 0 4px 0px;
 }
 .nav-toggle-col {
-  text-align: right;
-  float: right;
-  margin: 25px 15px 15px 15px;
+	text-align: right;
+	float: right;
+	margin: 25px 15px 15px 15px;
 }
 .clear {
-  clear: both;
+	clear: both;
 }
 .nav-toggle-col {
-  display: none;
+	display: none;
 }
 
 .login-form-sec-outer {
-  background: #0093ff;
-  padding: 30px;
-  position: fixed;
-  width: 100%;
-  height: 100%;
+	background: #0093ff;
+	padding: 30px;
+	position: fixed;
+	width: 100%;
+	height: 100%;
 }
 
 .login-form.login-form-sec {
-  background: #fff;
-  width: 500px;
-  margin: auto;
-  padding: 30px;
-  align-items: center;
+	background: #fff;
+	width: 500px;
+	margin: auto;
+	padding: 30px;
+	align-items: center;
+	border-radius: 4px;
 }
 
-.login-form.login-form-sec input[type="email"],
-.login-form.login-form-sec input[type="password"] {
-  border-radius: 0px;
-  width: 100%;
+.login-form.login-form-sec input[type='email'],
+.login-form.login-form-sec input[type='password'] {
+	border-radius: 4px;
+	width: 100%;
 }
 
-.login-form-sec button[type="submit"] {
-  background: #0093ff;
-  border-radius: 0;
-  font-size: 18px;
-  text-transform: uppercase;
-  width: 140px;
+.login-form-sec button[type='submit'] {
+	background: #0093ff;
+	font-size: 1rem;
+	border-radius: 4px;
+	font-weight: 700;
 }
 
-.login-form.login-form-sec input[type="email"]:focus,
-.login-form.login-form-sec input[type="password"]:focus {
-  outline: none;
-  box-shadow: none;
-  border-color: #0093ff;
+.login-form.login-form-sec input[type='email']:focus,
+.login-form.login-form-sec input[type='password']:focus {
+	outline: none;
+	box-shadow: none;
+	border-color: #0093ff;
 }
 
 .login-form-sec-inner {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  transform: translateY(-50%);
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
 .login-form.login-form-sec label {
-  font-size: 16px;
-  font-weight: 500;
+	font-size: 16px;
+	font-weight: 500;
 }
 
 /*tab css start here*/
 .tab-container nav-tabs {
-  background: #0093ff;
+	background: #0093ff;
 }
 
 .tab-container nav.nav.nav-tabs {
-  background: #474747;
-  border: none;
-  margin: 0 0 8px 0;
+	background: #474747;
+	border: none;
+	margin: 0 0 8px 0;
 }
 
-.tab-container .nav-tabs .nav-link.active, .tab-container .nav-tabs .nav-item.show .nav-link{border-radius:0px;background:#ccc;border: none;margin: 0;color: #0093ff;}
+.tab-container .nav-tabs .nav-link.active,
+.tab-container .nav-tabs .nav-item.show .nav-link {
+	border-radius: 0px;
+	background: #ccc;
+	border: none;
+	margin: 0;
+	color: #0093ff;
+}
 
+.tab-container .nav-tabs .nav-link:hover,
+.tab-container .nav-tabs .nav-link:focus {
+	border: none;
+}
 
-.tab-container .nav-tabs .nav-link:hover, .tab-container .nav-tabs .nav-link:focus{ border:none;}
+.tab-container .nav-tabs .nav-link {
+	border: none;
+	color: #fff;
+	font-size: 16px;
+	text-transform: uppercase;
+}
 
-
-.tab-container .nav-tabs .nav-link{border:none; color:#fff; font-size: 16px;
-  text-transform: uppercase;}
-
-  .tab-content p {
-    font-size: 16px;
-   
+.tab-content p {
+	font-size: 16px;
 }
 
 .tab-content .row {
-  display: block;
+	display: block;
 }
 
 .tab-content .row .navigation {
-  display: inline-block;
-  vertical-align: top;
+	display: inline-block;
+	vertical-align: top;
 }
 
 .tab-content .row .form-sec {
-  display: inline-block;
-  vertical-align: top;
-  padding-bottom: 0;
-  min-height: 500px;
+	display: inline-block;
+	vertical-align: top;
+	padding-bottom: 0;
+	min-height: 500px;
 }
 
-
-.navigation{ padding:0px !important;}
+.navigation {
+	padding: 0px !important;
+}
 
 .navigation .nav-item .nav-link {
-  border-radius: 0;
+	border-radius: 0;
 }
 
 .navigation.sidebar {
-  background: #007bff;
+	background: #007bff;
 }
-.sidebar .nav-pills .nav-link.active, .nav-pills .show > .nav-link{ background:#404040;}
+.sidebar .nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+	background: #404040;
+}
 
 .navigation.sidebar .nav-item .nav-link {
-  color: #fff;
+	color: #fff;
 }
 
-.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
-  color: #fff;
-  outline: 0;
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus {
+	color: #fff;
+	outline: 0;
 }
 
 .navigation .navbar-nav a {
-  color: #fff;
-  padding: 10px 25px;
-  text-transform: uppercase;
-  font-size: 16px;
+	color: #fff;
+	padding: 10px 25px;
+	text-transform: uppercase;
+	font-size: 16px;
 }
-.navigation .navbar-nav a:hover, .navigation .navbar-nav a.active {
-  text-decoration: none;
-  background:#007bff
+.navigation .navbar-nav a:hover,
+.navigation .navbar-nav a.active {
+	text-decoration: none;
+	background: #007bff;
 }
 
 .navigation .navbar-collapse {
-  position: relative;
+	position: relative;
 }
 
-button.logout-btn{ position: absolute;
-  right: 0;
-  background: #007bff;
-  border: none;
-  color: #fff;
-  text-transform: uppercase;
-  padding: 10px 15px;}
+button.logout-btn {
+	position: absolute;
+	right: 0;
+	background: #007bff;
+	border: none;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 10px 15px;
+}
 
-  .social-icon button {
-    color: #0093ff;
-    font-size: 30px;
-    margin: 0px 10px 0px 0px;
-    border: none;
-    outline: 0;
-    background: none;
+.social-icon button {
+	color: #0093ff;
+	font-size: 3rem;
+	margin: auto;
+	border: none;
+	outline: 0;
+	background: none;
+	display: block;
+	text-align: center;
+}
+.social-icon button:focus {
+	outline: 0;
+}
+
+.social-icon span {
+	font-size: 1.8rem;
+	margin: auto;
+	display: block;
+	font-weight: 700;
+	text-align: center;
 }
 .social-icon {
-  margin: 0 0 15px 0px;
+	margin: 0 0 15px 0px;
 }
 .login-form.login-form-sec .form-check {
-  margin: 0 0 10px 0px;
+	margin: 0 0 10px 0px;
 }
 
-.login-form.login-form-sec .form-check input[type="checkbox"] {
-  display: inline-block;
-  vertical-align: middle;
-  margin-top: 0.5rem;
-  padding: 0;
+.login-form.login-form-sec .form-check input[type='checkbox'] {
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: 0.5rem;
+	padding: 0;
 }
 
 @media only screen and (max-width: 1024px) {
-.navigation a.nav-link:hover {
-  background: none;
-}
-
+	.navigation a.nav-link:hover {
+		background: none;
+	}
 }
 @media only screen and (max-width: 992px) {
-.navigation .navbar-nav {
-  background: #404040;
-}
+	.navigation .navbar-nav {
+		background: #404040;
+	}
 
-.navigation .bg-light {
-  background: none !important;
-}
-.navigation .bg-light button.navbar-toggler {
-  border: 1px solid #ccc;
-  margin: 10px 0px;
-}
-.navigation .bg-light button:focus{outline:0;}
+	.navigation .bg-light {
+		background: none !important;
+	}
+	.navigation .bg-light button.navbar-toggler {
+		border: 1px solid #ccc;
+		margin: 10px 0px;
+	}
+	.navigation .bg-light button:focus {
+		outline: 0;
+	}
 
-.navigation .navbar{    justify-content: flex-end;}
+	.navigation .navbar {
+		justify-content: flex-end;
+	}
 
-button.logout-btn {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  text-align: left;
-}
-.navigation .navbar-nav {
-  padding-bottom: 55px;
-}
-
+	button.logout-btn {
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		text-align: left;
+	}
+	.navigation .navbar-nav {
+		padding-bottom: 55px;
+	}
 }
 @media only screen and (max-width: 767px) {
-  .navigation.inactive {
-    visibility: hidden; /* hides sub-menu */
-    opacity: 0;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    -webkit-transform: translateY(0em);
-    -ms-transform: translateY(0em);
-    -moz-transform: translateY(0em);
-    transform: translateY(0em);
-    z-index: -1;
-    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s,
-      z-index 0s linear 0.01s;
-  }
-  .navigation.active {
-    visibility: visible; /* shows sub-menu */
-    opacity: 1;
-    z-index: 1;
-    -webkit-transform: translateY(0%);
-    -ms-transform: translateY(0%);
-    -moz-transform: translateY(0%);
-    transform: translateY(0%);
-    transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
-  }
-  .nav-toggle-col {
-    display: block;
-  }
+	.navigation.inactive {
+		visibility: hidden; /* hides sub-menu */
+		opacity: 0;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		-webkit-transform: translateY(0em);
+		-ms-transform: translateY(0em);
+		-moz-transform: translateY(0em);
+		transform: translateY(0em);
+		z-index: -1;
+		transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+	}
+	.navigation.active {
+		visibility: visible; /* shows sub-menu */
+		opacity: 1;
+		z-index: 1;
+		-webkit-transform: translateY(0%);
+		-ms-transform: translateY(0%);
+		-moz-transform: translateY(0%);
+		transform: translateY(0%);
+		transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+	}
+	.nav-toggle-col {
+		display: block;
+	}
 
-  .login-form.login-form-sec {
-    width: 80%;
-  }
-  .tab-container .nav-tabs .nav-link {
-    width: 100%;
-    border-bottom: 1px solid #404040;
-}
+	.login-form.login-form-sec {
+		width: 80%;
+	}
+	.tab-container .nav-tabs .nav-link {
+		width: 100%;
+		border-bottom: 1px solid #404040;
+	}
 
-.tab-container .nav-tabs .nav-link:last-child {
-    border-bottom: none;
+	.tab-container .nav-tabs .nav-link:last-child {
+		border-bottom: none;
+	}
+	.tab-container.inactive nav.nav.nav-tabs {
+		display: none;
+	}
+	.tab-content .row .form-sec {
+		min-height: 300px;
+	}
+	.container {
+		padding: 0px 30px !important;
+	}
 }
-.tab-container.inactive nav.nav.nav-tabs {
-  display: none;
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+	.tab-content .row .form-sec {
+		min-height: 100%;
+	}
 }
-.tab-content .row .form-sec{min-height: 300px;}
-.container {
-  padding: 0px 30px !important;
-}
-
-}
-@media only screen and (max-width: 767px) and (orientation : landscape){ 
-  .tab-content .row .form-sec{min-height: 100%;}
-}
-
