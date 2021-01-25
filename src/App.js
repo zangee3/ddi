@@ -24,6 +24,7 @@ const App = () => {
         <React.Suspense fallback={loading()}>
           <Switch>
             <Route path="/login" component={Login} />
+
             <ProtectedRoute path="/" component={DefaultLayout} />
           </Switch>
         </React.Suspense>
