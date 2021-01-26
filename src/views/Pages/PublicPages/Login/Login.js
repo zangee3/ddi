@@ -1,19 +1,20 @@
 /* global FB */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 // import { Button, Form } from "react-bootstrap";
-import { useForm } from "react-hook-form";
-import { login } from "../../../../redux/auth/action";
-import { useDispatch, useSelector } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { apiPaths } from "../../../../utils/apiPaths";
-import ClientOAuth2 from "client-oauth2";
-import axios from "axios";
+import { useForm } from 'react-hook-form';
+import { login } from '../../../../redux/auth/action';
+import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { apiPaths } from '../../../../utils/apiPaths';
+import ClientOAuth2 from 'client-oauth2';
+import OAuth from '@zalando/oauth2-client-js';
+import axios from 'axios';
 const Login = () => {
   const dispatch = useDispatch();
-  const auth = useSelector(state => state.auth.isAuth);
+  const auth = useSelector((state) => state.auth.isAuth);
   const { register, handleSubmit, errors, watch, formState } = useForm({
-    mode: "onChange"
+    mode: 'onChange',
   });
 
   useEffect(() => {
@@ -24,10 +25,10 @@ const Login = () => {
     // document.body.appendChild(script);
   }, []);
 
-  const loginUser = value => {
+  const loginUser = (value) => {
     const loginData = {
       userName: value.email,
-      password: value.password
+      password: value.password,
     };
     dispatch(login(loginData));
   };
@@ -65,20 +66,24 @@ const Login = () => {
   //   });
   // };
   const onClickServiceProvider = () => {
-    var githubAuth = new ClientOAuth2({
-      clientId: apiPaths.fb_app_id,
-      clientSecret: "2ba124b5c7fc968bd0bff5d72b903341",
-      accessTokenUri: "https://www.facebook.com/v9.0/dialog/oauth",
-      authorizationUri: "https://www.facebook.com/v9.0/dialog/oauth",
-      redirectUri: "http://localhost:3000/callback",
-      scopes: ["email"]
+    var google = new OAuth.Provider({
+      id: 'google', // required
+      authorization_url: 'https://google.com/auth', // required
     });
+    // var githubAuth = new ClientOAuth2({
+    //   clientId: apiPaths.fb_app_id,
+    //   clientSecret: apiPaths.fb_client_secret_id,
+    //   accessTokenUri: 'https://graph.facebook.com/oauth/access_token',
+    //   authorizationUri: 'https://www.facebook.com/dialog/oauth',
+    //   redirectUri: 'https://easymeet.io/login',
+    //   scopes: ['email'],
+    // });
   };
   return (
-    <div className="login-form-sec-outer">
-      <div className="login-form-sec-inner">
-        <div className="login-form login-form-sec">
-          <div className="social-icon">
+    <div className='login-form-sec-outer'>
+      <div className='login-form-sec-inner'>
+        <div className='login-form login-form-sec'>
+          <div className='social-icon'>
             <button
               onClick={() => {
                 // FB.login(facebookLoginHandler, { scope: "public_profile" });
@@ -91,65 +96,65 @@ const Login = () => {
             <span>Login With Facebook</span>
           </div>
           <form
-            className="mb-4"
+            className='mb-4'
             onSubmit={handleSubmit(loginUser)}
-            autoComplete="off"
+            autoComplete='off'
           >
-            <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Email address</label>
+            <div className='form-group'>
+              <label htmlFor='exampleInputEmail1'>Email address</label>
               <input
-                type="email"
-                className="form-control"
-                id="exampleInputEmail1"
-                placeholder="Email address"
-                aria-describedby="emailHelp"
-                name="email"
+                type='email'
+                className='form-control'
+                id='exampleInputEmail1'
+                placeholder='Email address'
+                aria-describedby='emailHelp'
+                name='email'
                 ref={register({
                   required: {
                     value: true,
-                    message: "Please enter your email"
-                  }
+                    message: 'Please enter your email',
+                  },
                 })}
               />
               {errors.email && (
-                <p className="customErrors text-danger mt-2">
+                <p className='customErrors text-danger mt-2'>
                   {errors.email.message}
                 </p>
               )}
             </div>
-            <div className="form-group password-input">
-              <label htmlFor="exampleInputPassword1">Password</label>
+            <div className='form-group password-input'>
+              <label htmlFor='exampleInputPassword1'>Password</label>
               <input
-                type="password"
-                id="passInput"
-                className="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-                name="password"
+                type='password'
+                id='passInput'
+                className='form-control'
+                id='exampleInputPassword1'
+                placeholder='Password'
+                name='password'
                 ref={register({ required: true })}
               />
               {errors.password && (
-                <p className="customErrors text-danger mt-2">
+                <p className='customErrors text-danger mt-2'>
                   Please enter password
                 </p>
               )}
             </div>
-            <div className="form-check">
+            <div className='form-check'>
               <input
-                type="checkbox"
-                className="form-check-input"
-                id="rememberPassword"
-                name="checkbox"
+                type='checkbox'
+                className='form-check-input'
+                id='rememberPassword'
+                name='checkbox'
                 //checked={rememberPassword}
                 //onChange={event => handleChechbox(event)}
                 // required
               />
-              <label className="form-check-label" htmlFor="rememberPassword">
+              <label className='form-check-label' htmlFor='rememberPassword'>
                 Remember me
               </label>
             </div>
-            <button type="submit" className="btn btn-primary w-100">
-              {"Log In"}
+            <button type='submit' className='btn btn-primary w-100'>
+              {'Log In'}
             </button>
 
             {/*<Dimmer active={loading} inverted><Loader active={loading} className={'lcolor'}/></Dimmer>*/}
