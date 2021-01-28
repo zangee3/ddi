@@ -319,6 +319,18 @@ button.logout-btn {
 	padding: 0;
 }
 
+.centered_logo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.img-center {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
 @media only screen and (max-width: 1024px) {
 	.navigation a.nav-link:hover {
 		background: none;

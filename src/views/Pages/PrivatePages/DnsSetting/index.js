@@ -26,16 +26,19 @@ const DnsSetting = () => {
       <Tab eventKey="DNS" title="DNS" >
       <div className="container">
   <div className="row">
-        <Tab.Container id="left-tabs-example-3" defaultActiveKey="A Records">
+        <Tab.Container id="left-tabs-example-3" defaultActiveKey="Host Records">
         <div className="col-md-3 navigation sidebar">
       <Nav variant="pills" className="flex-column">
-     
+      {
+        /*
         <Nav.Item>
           <Nav.Link eventKey="A Records">A Records</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="CNAME Records">CNAME Records</Nav.Link>
         </Nav.Item>
+        */
+      }
         <Nav.Item>
           <Nav.Link eventKey="TXT Records">TXT Records</Nav.Link>
         </Nav.Item>

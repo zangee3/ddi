@@ -1,4 +1,4 @@
 export const apiPaths = {
-  fb_app_id: '466367304750660',
-  fb_client_secret_id: '2ba124b5c7fc968bd0bff5d72b903341',
+  app_id: 'ddi-dev',
+  client_secret_id: 'PUKVrcCOl7V77Lknk3Rj2bZqVbHG2iHo9K2nNKtBhSfmHJsYcs',
 };
