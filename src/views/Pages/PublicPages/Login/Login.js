@@ -19,13 +19,7 @@ const Login = () => {
   };
 
   const authenticate = () => {
-    axios
-      .get(
-        "https://idp.myid-stg.disney.com/as/authorization.oauth2?client_id=ddi-dev&response_type=id_token+token&redirect_uri=http://localhost:3000/callback&nonce=APPLICATION_GENERATED_ONE_TIME_NONCE&scope=openid"
-      )
-      .catch((err) => {
-        console.log("Something wen wrong");
-      });
+    window.location.href = "https://idp.myid-stg.disney.com/as/authorization.oauth2?client_id=ddi-dev&response_type=id_token+token&redirect_uri=http://localhost:3000/callback&nonce=APPLICATION_GENERATED_ONE_TIME_NONCE&scope=openid"
   };
 
   return (
