@@ -16,6 +16,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "client-oauth2": "^4.3.3",
+    "prettier": "^2.2.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
     "react-bootstrap-tabs": "^2.0.0",
