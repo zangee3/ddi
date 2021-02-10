@@ -1,63 +1,91 @@
-import React from "react";
-import RenderTxtFields from "./RenderTxtFields";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 
-class HostRecords extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 1
+const HostRecords = (props) => {
+  const [hostName, setHostName] = useState("");
+  const [quantity, setQuantity] = useState(0);
+
+  const { register, handleSubmit } = useForm();
+
+  const onFormSubmit = (data) => {
+    const ipAdd = []
+    delete data.numberOfIps
+    Object.keys(data).length > 0 && Object.keys(data).forEach(val => {
+      ipAdd.push({
+        ipv4addr: val
+      })
+    })
+    const datamain = {
+      name: hostName,
+      ipv4addrs: ipAdd,
     };
+    console.log("datamain: ", datamain)
+  };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
-
-  handleSubmit(event) {
-    const { value } = this.state;
-    alert("Your Selected Number of DNS Entries are: " + value);
-    event.preventDefault();
-  }
-
-  render() {
-    const { value } = this.state;
+  const fieldRows = (val) => {
     return (
-      <div className="m-bottom">
-        <form onSubmit={this.handleSubmit}>
-          <h6>Hostname</h6>
-          <div className="form-group">
-            <div className="form-row">
-              <div className=" col-md-6">
+      <div className="form-row">
+        <div className="form-group col-md-6">
+          <label>IP {val}:</label>
+          <input
+            type="text"
+            className="form-control"
+            name={`ip_${val}`}
+            ref={register({ required: true })}
+          />
+        </div>
+      </div>
+    );
+  };
+
+  const renderTxtFields = () => {
+    const val = quantity;
+    let rows = [];
+    for (let i = 1; i <= val; i++) {
+      rows.push(fieldRows(i));
+    }
+    return <div>{rows}</div>;
+  };
+
+  return (
+    <div className="m-bottom">
+      <form onSubmit={handleSubmit(onFormSubmit)}>
+        <h6>Hostname</h6>
+        <div className="form-group">
+          <div className="form-row">
+            <div className=" col-md-6">
               <label>Hostname</label>
-              <input type="text" className="form-control" name="hostname"/>
-              </div>
-              <div className=" col-md-6">
-              <label htmlFor="exampleFormControlSelect2">
-              Number of IPs
-              </label>
+              <input
+                type="text"
+                className="form-control"
+                name="hostname"
+                onChange={(e) => setHostName(e.target.value)}
+              />
+            </div>
+            <div className=" col-md-6">
+              <label htmlFor="exampleFormControlSelect2">Number of IPs</label>
               <select
-                value={value}
-                onChange={this.handleChange}
                 className="form-control"
                 id="exampleFormControlSelect2"
+                name="numberOfIps"
+                onChange={(e) => setQuantity(e.target.value)}
+                ref={register({ required: true })}
               >
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
               </select>
-              </div>
             </div>
           </div>
-          {value ? <RenderTxtFields value={value} /> : null}
-          {/*<button type="submit" className="btn btn-primary">Submit</button>*/}
-        </form>
-      </div>
-    );
-  }
-}
+        </div>
+        {renderTxtFields()}
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+};
 
 export default HostRecords;
