@@ -11,9 +11,10 @@ const HostRecords = (props) => {
   const onFormSubmit = (data) => {
     const ipAdd = []
     delete data.numberOfIps
+    
     Object.keys(data).length > 0 && Object.keys(data).forEach(val => {
       ipAdd.push({
-        ipv4addr: val
+        ipv4addr: data[val]
       })
     })
     const datamain = {
@@ -23,7 +24,7 @@ const HostRecords = (props) => {
     console.log("datamain: ", datamain)
     axios
       .post('http://localhost:9000/infoblox', datamain)
-      .then(() => console.log('Host Created'))
+      .then((response) => console.log('Host Created', response))
       .catch(err => {
         console.error(err);
       });
