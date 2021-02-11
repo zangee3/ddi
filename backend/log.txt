@@ -1,0 +1,219 @@
+{ "Error": "AdmConProtoError: Invalid value for ipv4addr: \"12312\": Invalid IPv4 address", 
+  "code": "Client.Ibap.Proto", 
+  "text": "Invalid value for ipv4addr: \"12312\": Invalid IPv4 address"
+}
+
+ hhh{ "Error": "AdmConProtoError: Invalid value for ipv4addr: \"12312\": Invalid IPv4 address", 
+  "code": "Client.Ibap.Proto", 
+  "text": "Invalid value for ipv4addr: \"12312\": Invalid IPv4 address"
+}
+
+ hhh
+
+{ "Error": "AdmConProtoError: Invalid value for ipv4addr: \"12312\": Invalid IPv4 address", 
+  "code": "Client.Ibap.Proto", 
+  "text": "Invalid value for ipv4addr: \"12312\": Invalid IPv4 address"
+}
+
+ hhh
+
+{ "Error": "AdmConProtoError: Invalid value for ipv4addr: \"12312\": Invalid IPv4 address", 
+  "code": "Client.Ibap.Proto", 
+  "text": "Invalid value for ipv4addr: \"12312\": Invalid IPv4 address"
+}
+
+ hhh
+
+{ "Error": "AdmConProtoError: Invalid value for ipv4addr: \"12312\": Invalid IPv4 address", 
+  "code": "Client.Ibap.Proto", 
+  "text": "Invalid value for ipv4addr: \"12312\": Invalid IPv4 address"
+}
+
+ hhh
+
+Request Body: {"name":"adads","ipv4addrs":[{"ipv4addr":"12312"}]}
+Infoblox Response:{ "Error": "AdmConProtoError: Invalid value for ipv4addr: \"12312\": Invalid IPv4 address", 
+  "code": "Client.Ibap.Proto", 
+  "text": "Invalid value for ipv4addr: \"12312\": Invalid IPv4 address"
+}
+
+
+
+Request Body: {"name":"ahmed.test.disney.com","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{
+    "result": {
+        "_ref": "record:host/ZG5zLmhvc3QkLl9kZWZhdWx0LmNvbS5kaXNuZXkudGVzdC5haG1lZA:ahmed.test.disney.com/default", 
+        "ipv4addrs": [
+            {
+                "_ref": "record:host_ipv4addr/ZG5zLmhvc3RfYWRkcmVzcyQuX2RlZmF1bHQuY29tLmRpc25leS50ZXN0LmFobWVkLjEuMi4zLjQu:1.2.3.4/ahmed.test.disney.com/default", 
+                "configure_for_dhcp": false, 
+                "host": "ahmed.test.disney.com", 
+                "ipv4addr": "1.2.3.4"
+            }
+        ], 
+        "name": "ahmed.test.disney.com"
+    }
+}
+
+
+
+Request Body: {"name":"ahmed.test.disney.com","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{ "Error": "AdmConDataError: None (IBDataConflictError: IB.Data.Conflict:The record 'ahmed.test.disney.com' already exists.)", 
+  "code": "Client.Ibap.Data.Conflict", 
+  "text": "The record 'ahmed.test.disney.com' already exists."
+}
+
+
+
+Request Body: {"name":"ahmed.test1.disney.com","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{
+    "result": {
+        "_ref": "record:host/ZG5zLmhvc3QkLl9kZWZhdWx0LmNvbS5kaXNuZXkudGVzdDEuYWhtZWQ:ahmed.test1.disney.com/default", 
+        "ipv4addrs": [
+            {
+                "_ref": "record:host_ipv4addr/ZG5zLmhvc3RfYWRkcmVzcyQuX2RlZmF1bHQuY29tLmRpc25leS50ZXN0MS5haG1lZC4xLjIuMy40Lg:1.2.3.4/ahmed.test1.disney.com/default", 
+                "configure_for_dhcp": false, 
+                "host": "ahmed.test1.disney.com", 
+                "ipv4addr": "1.2.3.4"
+            }
+        ], 
+        "name": "ahmed.test1.disney.com"
+    }
+}
+
+
+
+Request Body: {"name":"ahmed.test1.disney.com","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{
+    "result": {
+        "_ref": "record:host/ZG5zLmhvc3QkLl9kZWZhdWx0LmNvbS5kaXNuZXkudGVzdDEuYWhtZWQ:ahmed.test1.disney.com/default", 
+        "ipv4addrs": [
+            {
+                "_ref": "record:host_ipv4addr/ZG5zLmhvc3RfYWRkcmVzcyQuX2RlZmF1bHQuY29tLmRpc25leS50ZXN0MS5haG1lZC4xLjIuMy40Lg:1.2.3.4/ahmed.test1.disney.com/default", 
+                "configure_for_dhcp": false, 
+                "host": "ahmed.test1.disney.com", 
+                "ipv4addr": "1.2.3.4"
+            }
+        ], 
+        "name": "ahmed.test1.disney.com"
+    }
+}
+
+
+
+Request Body: {"name":"adasd","ipv4addrs":[{"ipv4addr":"123"}]}
+Infoblox Response:{ "Error": "AdmConProtoError: Invalid value for ipv4addr: \"123\": Invalid IPv4 address", 
+  "code": "Client.Ibap.Proto", 
+  "text": "Invalid value for ipv4addr: \"123\": Invalid IPv4 address"
+}
+
+
+
+Request Body: {"name":"ahmed.test.disney.com","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{ "Error": "AdmConDataError: None (IBDataConflictError: IB.Data.Conflict:The record 'ahmed.test.disney.com' already exists.)", 
+  "code": "Client.Ibap.Data.Conflict", 
+  "text": "The record 'ahmed.test.disney.com' already exists."
+}
+
+
+
+Request Body: {"name":"ahmed.test.disney.com","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{ "Error": "AdmConDataError: None (IBDataConflictError: IB.Data.Conflict:The record 'ahmed.test.disney.com' already exists.)", 
+  "code": "Client.Ibap.Data.Conflict", 
+  "text": "The record 'ahmed.test.disney.com' already exists."
+}
+
+
+
+Request Body: {"name":"kjhkjh","ipv4addrs":[{"ipv4addr":"86565"}]}
+Infoblox Response:{ "Error": "AdmConProtoError: Invalid value for ipv4addr: \"86565\": Invalid IPv4 address", 
+  "code": "Client.Ibap.Proto", 
+  "text": "Invalid value for ipv4addr: \"86565\": Invalid IPv4 address"
+}
+
+
+
+Request Body: {"name":"test.ahmed.disney","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{
+    "result": {
+        "_ref": "record:host/ZG5zLmhvc3QkLl9kZWZhdWx0LmRpc25leS5haG1lZC50ZXN0:test.ahmed.disney/default", 
+        "ipv4addrs": [
+            {
+                "_ref": "record:host_ipv4addr/ZG5zLmhvc3RfYWRkcmVzcyQuX2RlZmF1bHQuZGlzbmV5LmFobWVkLnRlc3QuMS4yLjMuNC4:1.2.3.4/test.ahmed.disney/default", 
+                "configure_for_dhcp": false, 
+                "host": "test.ahmed.disney", 
+                "ipv4addr": "1.2.3.4"
+            }
+        ], 
+        "name": "test.ahmed.disney"
+    }
+}
+
+
+
+Request Body: {"name":"test.ahmed.disney","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{ "Error": "AdmConDataError: None (IBDataConflictError: IB.Data.Conflict:The record 'test.ahmed.disney' already exists.)", 
+  "code": "Client.Ibap.Data.Conflict", 
+  "text": "The record 'test.ahmed.disney' already exists."
+}
+
+
+
+Request Body: {"name":"test.ahmed.disney","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{ "Error": "AdmConDataError: None (IBDataConflictError: IB.Data.Conflict:The record 'test.ahmed.disney' already exists.)", 
+  "code": "Client.Ibap.Data.Conflict", 
+  "text": "The record 'test.ahmed.disney' already exists."
+}
+
+
+
+Request Body: {"name":"test.ahmed.disney","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{ "Error": "AdmConDataError: None (IBDataConflictError: IB.Data.Conflict:The record 'test.ahmed.disney' already exists.)", 
+  "code": "Client.Ibap.Data.Conflict", 
+  "text": "The record 'test.ahmed.disney' already exists."
+}
+
+
+
+Request Body: {"name":"test.ahmed100.disney","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{
+    "result": {
+        "_ref": "record:host/ZG5zLmhvc3QkLl9kZWZhdWx0LmRpc25leS5haG1lZDEwMC50ZXN0:test.ahmed100.disney/default", 
+        "ipv4addrs": [
+            {
+                "_ref": "record:host_ipv4addr/ZG5zLmhvc3RfYWRkcmVzcyQuX2RlZmF1bHQuZGlzbmV5LmFobWVkMTAwLnRlc3QuMS4yLjMuNC4:1.2.3.4/test.ahmed100.disney/default", 
+                "configure_for_dhcp": false, 
+                "host": "test.ahmed100.disney", 
+                "ipv4addr": "1.2.3.4"
+            }
+        ], 
+        "name": "test.ahmed100.disney"
+    }
+}
+
+
+
+Request Body: {"name":"test.ahmed.com","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{
+    "result": {
+        "_ref": "record:host/ZG5zLmhvc3QkLl9kZWZhdWx0LmNvbS5haG1lZC50ZXN0:test.ahmed.com/default", 
+        "ipv4addrs": [
+            {
+                "_ref": "record:host_ipv4addr/ZG5zLmhvc3RfYWRkcmVzcyQuX2RlZmF1bHQuY29tLmFobWVkLnRlc3QuMS4yLjMuNC4:1.2.3.4/test.ahmed.com/default", 
+                "configure_for_dhcp": false, 
+                "host": "test.ahmed.com", 
+                "ipv4addr": "1.2.3.4"
+            }
+        ], 
+        "name": "test.ahmed.com"
+    }
+}
+
+
+
+Request Body: {"name":"test.ahmed.com","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{ "Error": "AdmConDataError: None (IBDataConflictError: IB.Data.Conflict:The record 'test.ahmed.com' already exists.)", 
+  "code": "Client.Ibap.Data.Conflict", 
+  "text": "The record 'test.ahmed.com' already exists."
+}
+

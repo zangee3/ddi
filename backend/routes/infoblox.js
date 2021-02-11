@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const request = require('request');
-
-
+const fs = require('fs');
 
 router.post("/", function (req, res, next) {
     const options = {
@@ -14,15 +13,20 @@ router.post("/", function (req, res, next) {
         requestCert: true,
         agent: false,
         auth: {
-            'user': 'ashams',
-            'pass': 'M0arAutomation!'
+            'user': 'codetesting',
+            'pass': 'D0ntGoB00m!'
         }
     };
     return request(options, function (error, response, body) {
+        let fileData = '\n\nRequest Body: '+options.body+'\n';
         if (!error && response.statusCode >= 200) {
-            // res.status(200).json(body);
-            
             console.log(body);
+            fileData += 'Infoblox Response:' + body + '\n\n';
+            fs.appendFileSync('log.txt', fileData, "utf8");
+            fs.appendFileSync('records.txt', options.body+'\n\n', "utf8");
+            // console.log("File written successfully\n"); 
+            // console.log("The written has the following contents:"); 
+            // console.log(fs.readFileSync("log.txt", "utf8")); 
             return res.send(body);
         } else {
             console.log("error-----",response.statusCode,body);
