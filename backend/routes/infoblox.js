@@ -18,15 +18,13 @@ router.post("/", function (req, res, next) {
             'pass': 'M0arAutomation!'
         }
     };
-    request(options, callback);
+    request(options, function (error, response, body) {
+        if (!error && response.statusCode >= 200) {
+            console.log(body);
+        } else {
+            console.log("error-----",response.statusCode,body);
+        }
+    });
 });
-
-function callback(error, response, body) {
-    if (!error && response.statusCode >= 200) {
-        console.log(body);
-    } else {
-        console.log("error-----",response.statusCode,body);
-    }
-}
 
 module.exports = router;
