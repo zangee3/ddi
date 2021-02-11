@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const HostRecords = (props) => {
   const [hostName, setHostName] = useState("");
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   const { register, handleSubmit } = useForm();
 
