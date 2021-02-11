@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const axios = require("axios");
+const https = require('https')
 
 router.post("/", function (req, res, next) {
   console.log(JSON.stringify(req.body));
@@ -12,6 +13,9 @@ router.post("/", function (req, res, next) {
         headers: {
           "content-type": "application/json",
         },
+          httpsAgent: new https.Agent({
+              rejectUnauthorized: false
+          }),
         params: {
           rejectUnauthorized: false,
           requestCert: true,
