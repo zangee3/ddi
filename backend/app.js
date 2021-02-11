@@ -1,30 +1,45 @@
-var request = require('request');
-var headers = {
-    'content-type': 'application/json'
-};
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+var cors = require("cors");
 
-var dataString = '{"name":"ahmed.test0.com","ipv4addrs":[{"ipv4addr":"10.10.10.20"}]}';
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var infobloxRouter = require("./routes/infoblox");
 
-var options = {
-    url: 'https://10.92.18.84/wapi/v2.9/record:host?_return_fields=name,ipv4addrs&_return_as_object=1',
-    method: 'POST',
-    headers: headers,
-    body: dataString,
-    rejectUnauthorized: false,
-    requestCert: true,
-    agent: false,
-    auth: {
-        'user': 'ashams',
-        'pass': 'M0arAutomation!'
-    }
-};
+var app = express();
 
-function callback(error, response, body) {
-    if (!error && response.statusCode >= 200) {
-        console.log(body);
-    } else {
-        console.log("error-----",response.statusCode,body);
-    }
-}
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+app.use(cors());
 
-request(options, callback);
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use("/infoblox", infobloxRouter);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;

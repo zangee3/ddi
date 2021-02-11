@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from 'axios';
 
 const HostRecords = (props) => {
   const [hostName, setHostName] = useState("");
@@ -20,6 +21,12 @@ const HostRecords = (props) => {
       ipv4addrs: ipAdd,
     };
     console.log("datamain: ", datamain)
+    axios
+      .post('http://localhost:9000/infoblox', datamain)
+      .then(() => console.log('Host Created'))
+      .catch(err => {
+        console.error(err);
+      });
   };
 
   const fieldRows = (val) => {
