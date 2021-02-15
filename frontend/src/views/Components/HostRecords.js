@@ -1,40 +1,55 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { useForm } from "react-hook-form";
-import axios from 'axios';
-
+import axios from "axios";
 
 const HostRecords = (props) => {
   const [hostName, setHostName] = useState("");
   const [quantity, setQuantity] = useState(1);
-  let [responseData, setResponseData] = React.useState('')
+  let [responseData, setResponseData] = React.useState("");
 
   const { register, handleSubmit } = useForm();
 
+  useEffect(() => {
+    getDNS()
+  }, [])
+
   const onFormSubmit = (data) => {
-    const ipAdd = []
-    delete data.numberOfIps
-    
-    Object.keys(data).length > 0 && Object.keys(data).forEach(val => {
-      ipAdd.push({
-        ipv4addr: data[val]
-      })
-    })
+    const ipAdd = [];
+    delete data.numberOfIps;
+
+    Object.keys(data).length > 0 &&
+      Object.keys(data).forEach((val) => {
+        ipAdd.push({
+          ipv4addr: data[val],
+        });
+      });
     const datamain = {
       name: hostName,
       ipv4addrs: ipAdd,
     };
-    console.log("datamain: ", datamain)
-    
+
     axios
-      .post('http://localhost:9000/infoblox', datamain)
-      .then((response)=>{
-        setResponseData(response.data)
-        console.log(response)
+      .post("http://localhost:9000/infoblox", datamain)
+      .then((response) => {
+        setResponseData(response.data);
+        console.log(response);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
       });
   };
+
+  const getDNS = () => {
+    axios.get("http://localhost:9000/infoblox/dns", {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(resp => {
+      console.log("resp",  resp.data.split(""))
+    }).catch(err => {
+      console.log(err)
+    })
+  }
 
   const fieldRows = (val) => {
     return (
@@ -98,20 +113,18 @@ const HostRecords = (props) => {
           Submit
         </button>
       </form>
-      <br/>
-      { 
-      (responseData.Error !== undefined) ? 
-      <div class="alert alert-danger" role="alert">
-        {responseData.Error}
-      </div>
-         : 
-         (responseData.result !== undefined) ?
-         <div class="alert alert-success" role="alert">
+      <br />
+      {responseData.Error !== undefined ? (
+        <div class="alert alert-danger" role="alert">
+          {responseData.Error}
+        </div>
+      ) : responseData.result !== undefined ? (
+        <div class="alert alert-success" role="alert">
           Record Added
         </div>
-          :
-          <div></div>
-        }
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };
