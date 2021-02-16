@@ -30,7 +30,7 @@ const HostRecords = (props) => {
     };
 
     axios
-      .post("http://localhost:9000/infoblox", datamain)
+      .post("http://localhost:9000/infoblox/addHostRecord", datamain)
       .then((response) => {
         setResponseData(response.data);
         getDNS()
@@ -83,7 +83,7 @@ const HostRecords = (props) => {
 
   const deleteRecord = (id, name) => {
     axios
-      .post("http://localhost:9000/infoblox/delete", { id, name }, {
+      .post("http://localhost:9000/infoblox/deleteHostRecord", { id, name }, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -96,7 +96,7 @@ const HostRecords = (props) => {
         console.log(err);
       });
   };
-
+  
   return (
     <div className="m-bottom">
       <form onSubmit={handleSubmit(onFormSubmit)}>
@@ -167,7 +167,7 @@ const HostRecords = (props) => {
                         JSON.parse(d.ipv4addrs).map((ipAddress) => {
                           return (
                               <>
-                                <span>{ipAddress.ipv4addr}</span>
+                                <span>{ipAddress.ipv4addr}</span>,  
                               </>
                           )
                         })}
