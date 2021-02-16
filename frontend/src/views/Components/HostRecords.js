@@ -42,7 +42,7 @@ const HostRecords = (props) => {
 
   const getDNS = () => {
     axios
-      .get("http://localhost:9000/infoblox/dns", {
+      .get("http://localhost:9000/infoblox/getHostRecords", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -119,6 +119,17 @@ const HostRecords = (props) => {
         </button>
       </form>
       <br />
+      {responseData.Error !== undefined ? (
+        <div className="alert alert-danger" role="alert">
+          {responseData.Error}
+        </div>
+      ) : responseData.result !== undefined ? (
+        <div className="alert alert-success" role="alert">
+          Record Added
+        </div>
+      ) : (
+        <div></div>
+      )}
       <div className={""}>
         <table>
           <thead>
