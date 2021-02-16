@@ -243,3 +243,55 @@ Infoblox Response:{ "Error": "AdmConDataError: None (IBDataConflictError: IB.Dat
   "text": "The record 'ahmed.testing.com' already exists."
 }
 
+
+
+Request Body: {"name":"ahmed.test1212.com","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{
+    "result": {
+        "_ref": "record:host/ZG5zLmhvc3QkLl9kZWZhdWx0LmNvbS50ZXN0MTIxMi5haG1lZA:ahmed.test1212.com/default", 
+        "ipv4addrs": [
+            {
+                "_ref": "record:host_ipv4addr/ZG5zLmhvc3RfYWRkcmVzcyQuX2RlZmF1bHQuY29tLnRlc3QxMjEyLmFobWVkLjEuMi4zLjQu:1.2.3.4/ahmed.test1212.com/default", 
+                "configure_for_dhcp": false, 
+                "host": "ahmed.test1212.com", 
+                "ipv4addr": "1.2.3.4"
+            }
+        ], 
+        "name": "ahmed.test1212.com"
+    }
+}
+
+
+
+Request Body: {"name":"ahmed.test.com","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{
+    "result": {
+        "_ref": "record:host/ZG5zLmhvc3QkLl9kZWZhdWx0LmNvbS50ZXN0LmFobWVk:ahmed.test.com/default", 
+        "ipv4addrs": [
+            {
+                "_ref": "record:host_ipv4addr/ZG5zLmhvc3RfYWRkcmVzcyQuX2RlZmF1bHQuY29tLnRlc3QuYWhtZWQuMS4yLjMuNC4:1.2.3.4/ahmed.test.com/default", 
+                "configure_for_dhcp": false, 
+                "host": "ahmed.test.com", 
+                "ipv4addr": "1.2.3.4"
+            }
+        ], 
+        "name": "ahmed.test.com"
+    }
+}
+
+
+
+Request Body: {"name":"ahmed.test.com","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{ "Error": "AdmConDataError: None (IBDataConflictError: IB.Data.Conflict:The record 'ahmed.test.com' already exists.)", 
+  "code": "Client.Ibap.Data.Conflict", 
+  "text": "The record 'ahmed.test.com' already exists."
+}
+
+
+
+Request Body: {"name":"ahmed.test.com","ipv4addrs":[{"ipv4addr":"1.2.3.4"}]}
+Infoblox Response:{ "Error": "AdmConDataError: None (IBDataConflictError: IB.Data.Conflict:The record 'ahmed.test.com' already exists.)", 
+  "code": "Client.Ibap.Data.Conflict", 
+  "text": "The record 'ahmed.test.com' already exists."
+}
+

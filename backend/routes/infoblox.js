@@ -32,13 +32,13 @@ router.post("/", function (req, res, next) {
 
         let fileData = '\n\nRequest Body: '+options.body+'\n';
         if (!error && response.statusCode >= 200) {
-            console.log(body);
+            
             fileData += 'Infoblox Response:' + body + '\n\n';
             fs.appendFileSync('log.txt', fileData, "utf8");
             fs.appendFileSync('records.json', options.body, "utf8");
-            const name = options.body.name
-            const ipv4addrs = options.body.ipv4addrs
-
+            const name = JSON.parse(options.body).name
+            const ipv4addrs = JSON.parse(options.body).ipv4addrs
+console.log("testing---", options.body, name, ipv4addrs);
             return connection.query("INSERT INTO dns (name, ipv4addrs) VALUES ('"+ name +"', '" + JSON.stringify(ipv4addrs) +"')", (err, result) => {
                 if(err) {
                     console.log(err)
