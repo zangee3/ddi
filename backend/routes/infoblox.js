@@ -4,15 +4,15 @@ const request = require('request');
 const fs = require('fs');
 
 router.post("/", function (req, res, next) {
+// console.log('Ahmed', req.body);
+//     fs.appendFileSync('log.txt', req.body );
+//     fs.readFile("records.txt", 'utf8', function (err, data) {
+//         if (err) throw err;
+//         res.status(200).send(data)
+//     })
 
-    fs.appendFileSync('log.txt', req.body );
-    fs.readFile("records.txt", 'utf8', function (err, data) {
-        if (err) throw err;
-        res.status(200).send(data)
-    })
-
-    fs.appendFileSync('records.json', JSON.stringify(req.body));
-    return res.send(req.body);
+//     fs.appendFileSync('records.json', JSON.stringify(req.body));
+//     return res.send(req.body);
 
     const options = {
         url: 'https://10.92.18.84/wapi/v2.9/record:host?_return_fields=name,ipv4addrs&_return_as_object=1',
@@ -45,8 +45,8 @@ router.post("/", function (req, res, next) {
     });
 });
 
-router.get("/dns", function (req, res, next) {
-    fs.readFile("records.txt", 'utf8', function (err, data) {
+router.get("/getHostRecords", function (req, res, next) {
+    fs.readFile("records.json", 'utf8', function (err, data) {
         if (err) throw err;
         res.status(200).send(data)
     })

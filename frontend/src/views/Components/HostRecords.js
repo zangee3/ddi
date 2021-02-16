@@ -40,12 +40,12 @@ const HostRecords = (props) => {
   };
 
   const getDNS = () => {
-    axios.get("http://localhost:9000/infoblox/dns", {
+    axios.get("http://localhost:9000/infoblox/getHostRecords", {
       headers: {
         "Content-Type": "application/json"
       }
     }).then(resp => {
-      console.log("resp",  resp.data.split(""))
+      console.log("Host Records:",  resp.data.split("\n"))
     }).catch(err => {
       console.log(err)
     })
@@ -115,11 +115,11 @@ const HostRecords = (props) => {
       </form>
       <br />
       {responseData.Error !== undefined ? (
-        <div class="alert alert-danger" role="alert">
+        <div className="alert alert-danger" role="alert">
           {responseData.Error}
         </div>
       ) : responseData.result !== undefined ? (
-        <div class="alert alert-success" role="alert">
+        <div className="alert alert-success" role="alert">
           Record Added
         </div>
       ) : (

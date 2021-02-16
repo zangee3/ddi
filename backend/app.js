@@ -23,7 +23,7 @@ const connection = mysql.createConnection({
 
 connection.connect(function (err) {
   if(err) throw err
-  console.log("Hello Pardip, You are successfully connted with Database")
+  console.log("You are successfully connted with Database")
 })
 
 
