@@ -33,7 +33,7 @@ const HostRecords = (props) => {
       .post("http://localhost:9000/infoblox", datamain)
       .then((response) => {
         setResponseData(response.data);
-        console.log(response);
+        getDNS()
       })
       .catch((err) => {
         console.error(err);
@@ -79,6 +79,22 @@ const HostRecords = (props) => {
       rows.push(fieldRows(i));
     }
     return <div>{rows}</div>;
+  };
+
+  const deleteRecord = (id, name) => {
+    axios
+      .post("http://localhost:9000/infoblox/delete", { id, name }, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((resp) => {
+        console.log(resp);
+        getDNS()
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -130,14 +146,14 @@ const HostRecords = (props) => {
       ) : (
         <div></div>
       )}
-      <div className={""}>
-        <table>
+      <div >
+        <table className="table">
           <thead>
             <tr>
               <th>Name</th>
               <th>IP</th>
+              <th>Actions</th>
             </tr>
-
           </thead>
 
           <tbody>
@@ -148,9 +164,20 @@ const HostRecords = (props) => {
                     <td>{d.name}</td>
                     <td>
                       {JSON.parse(d.ipv4addrs).length > 0 &&
-                      JSON.parse(d.ipv4addrs).map((ipAddress) => {
-                        return <span>{ipAddress.ipv4addr}</span>;
-                      })}
+                        JSON.parse(d.ipv4addrs).map((ipAddress) => {
+                          return (
+                              <>
+                                <span>{ipAddress.ipv4addr}</span>
+                              </>
+                          )
+                        })}
+                    </td>
+                    <td>
+                      <span style={{ cursor: "pointer" }} onClick={() => deleteRecord(d.id, d.name)}>Delete</span>
+                    </td>
+
+                    <td>
+                      <span style={{ cursor: "pointer" }} onClick={() => deleteRecord(d.id, d.name)}>Edit</span>
                     </td>
                   </tr>
                 );
