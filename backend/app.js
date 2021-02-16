@@ -4,8 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
-var mysql = require('mysql')
-
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -13,18 +11,7 @@ var infobloxRouter = require("./routes/infoblox");
 
 var app = express();
 
-const connection = mysql.createConnection({
-  host: 'mysql-15664-0.cloudclusters.net',
-  user: 'gugu',
-  password: 'qy@x$5hFpQ9j',
-  database: 'ahmed',
-  port: 15664
-})
 
-connection.connect(function (err) {
-  if(err) throw err
-  console.log("Hello Pardip, You are successfully connted with Database")
-})
 
 
 // view engine setup
