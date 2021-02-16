@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const request = require('request');
 const fs = require('fs');
+const connection = require("./db")
 
 router.post("/", function (req, res, next) {
 // console.log('Ahmed', req.body);
@@ -35,10 +36,17 @@ router.post("/", function (req, res, next) {
             fileData += 'Infoblox Response:' + body + '\n\n';
             fs.appendFileSync('log.txt', fileData, "utf8");
             fs.appendFileSync('records.json', options.body, "utf8");
-            // console.log("File written successfully\n");
-            // console.log("The written has the following contents:");
-            // console.log(fs.readFileSync("log.txt", "utf8"));
-            return res.send(body);
+            const name = options.body.name
+            const ipv4addrs = options.body.ipv4addrs
+
+            return connection.query("INSERT INTO dns (name, ipv4addrs) VALUES ('"+ name +"', '" + JSON.stringify(ipv4addrs) +"')", (err, result) => {
+                if(err) {
+                    console.log(err)
+                    return res.status(400).json(err)
+                }
+                console.log(result)
+                return res.status(200).json(options.body);
+            });
         } else {
             console.log("error-----",response.statusCode,body);
         }
@@ -46,10 +54,14 @@ router.post("/", function (req, res, next) {
 });
 
 router.get("/getHostRecords", function (req, res, next) {
-    fs.readFile("records.json", 'utf8', function (err, data) {
-        if (err) throw err;
-        res.status(200).send(data)
-    })
+    return connection.query("SELECT * from dns", (err, result) => {
+        if(err) {
+            console.log(err)
+            return res.status(400).json(err)
+        }
+        console.log(result)
+        return res.status(200).json(result);
+    });
 })
 
 module.exports = router;

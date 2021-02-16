@@ -1,17 +1,18 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
 const HostRecords = (props) => {
   const [hostName, setHostName] = useState("");
   const [quantity, setQuantity] = useState(1);
-  let [responseData, setResponseData] = React.useState("");
+  const [responseData, setResponseData] = React.useState("");
+  const [dnsData, setDnsData] = useState([]);
 
   const { register, handleSubmit } = useForm();
 
   useEffect(() => {
-    getDNS()
-  }, [])
+    getDNS();
+  }, []);
 
   const onFormSubmit = (data) => {
     const ipAdd = [];
@@ -40,16 +41,20 @@ const HostRecords = (props) => {
   };
 
   const getDNS = () => {
-    axios.get("http://localhost:9000/infoblox/getHostRecords", {
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).then(resp => {
-      console.log("Host Records:",  resp.data.split("\n"))
-    }).catch(err => {
-      console.log(err)
-    })
-  }
+    axios
+      .get("http://localhost:9000/infoblox/getHostRecords", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((resp) => {
+        const { data } = resp;
+        setDnsData(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const fieldRows = (val) => {
     return (
@@ -125,6 +130,34 @@ const HostRecords = (props) => {
       ) : (
         <div></div>
       )}
+      <div className={""}>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>IP</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+            {dnsData.length > 0 &&
+              dnsData.map((d) => {
+                return (
+                  <tr>
+                    <td>{d.name}</td>
+                    <td>
+                      {JSON.parse(d.ipv4addrs).length > 0 &&
+                      JSON.parse(d.ipv4addrs).map((ipAddress) => {
+                        return <span>{ipAddress.ipv4addr}</span>;
+                      })}
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
