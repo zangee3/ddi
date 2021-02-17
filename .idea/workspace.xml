@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="458fce96-6a98-4753-aedc-b0d658fcce4e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/backup/udpateip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/atoms/dns/hostNameText.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/infoblox.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/infoblox.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/Components/HostRecords.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Components/HostRecords.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +64,8 @@
       <workItem from="1613040605770" duration="1567000" />
       <workItem from="1613110094256" duration="339000" />
       <workItem from="1613373038406" duration="7448000" />
-      <workItem from="1613452686822" duration="12479000" />
+      <workItem from="1613452686822" duration="12567000" />
+      <workItem from="1613538444608" duration="20736000" />
     </task>
     <servers />
   </component>
@@ -77,6 +82,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
