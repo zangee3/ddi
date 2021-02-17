@@ -177,7 +177,7 @@ const HostRecords = (props) => {
                     </td>
 
                     <td>
-                      <span style={{ cursor: "pointer" }} onClick={() => deleteRecord(d.id, d.name)}>Edit</span>
+                      <span style={{ cursor: "pointer" }} >Edit</span>
                     </td>
                   </tr>
                 );
