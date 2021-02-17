@@ -202,7 +202,7 @@ const HostRecords = (props) => {
           Record Added
         </div>
       ) : (
-        <div></div>
+        <div>""</div>
       )}
       <div>
         <table className="table">
@@ -240,6 +240,7 @@ const HostRecords = (props) => {
                     </td>
 
                     <td>
+
                       <span
                         style={{ cursor: "pointer" }}
                         onClick={() => {
@@ -250,6 +251,7 @@ const HostRecords = (props) => {
                       >
                         Edit
                       </span>
+
                     </td>
                   </tr>
                 );
