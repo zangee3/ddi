@@ -8,16 +8,11 @@ import { useForm } from "react-hook-form";
 
 const totalInputAllowed = 4;
 
-const HostRecordItem = ({
-  dnsData,
-  deleteRecord,
-
-  getDns,
-}) => {
+const HostRecordItem = ({ dnsData, responseD, getDns }) => {
   const [show, setShow] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [singleData, setSingleData] = useState({});
-  const [responseData, setResponseData] = React.useState("");
+  const [responseData, setResponseData] = React.useState(responseD);
   const { register, handleSubmit } = useForm();
 
   const confirmDelete = (id, name) => {
@@ -32,6 +27,26 @@ const HostRecordItem = ({
       }
     });
   };
+
+	const deleteRecord = (id, name) => {
+		axios
+			.post(
+				"http://localhost:9000/infoblox/deleteHostRecord",
+				{ id, name },
+				{
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+			)
+			.then((resp) => {
+				setResponseData(resp.data);
+				getDns();
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
 
   const updateClicked = (data) => {
     const ipAdd = [];

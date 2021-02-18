@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="458fce96-6a98-4753-aedc-b0d658fcce4e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/Components/HostRecordItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Components/HostRecordItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/Components/HostRecords.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Components/HostRecords.js" afterDir="false" />

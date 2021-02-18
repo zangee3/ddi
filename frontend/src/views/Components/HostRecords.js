@@ -83,26 +83,7 @@ const HostRecords = () => {
     return <div>{rows}</div>;
   };
 
-  const deleteRecord = (id, name) => {
-    axios
-      .post(
-        "http://localhost:9000/infoblox/deleteHostRecord",
-        { id, name },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((resp) => {
-        console.log(resp.data);
-		  setResponseData(resp.data);
-        getDNS();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+
 
   return (
     <div className="m-bottom">
@@ -169,7 +150,6 @@ const HostRecords = () => {
       <div>
         <HostRecordItem
           dnsData={dnsData}
-          deleteRecord={deleteRecord}
           register={register}
           handleSubmit={handleSubmit}
 		  getDns={getDNS}
