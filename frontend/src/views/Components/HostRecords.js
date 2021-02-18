@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useRecoilState } from "recoil";
 
-const HostRecords = (props) => {
-  const [hostName, setHostName] = useState("");
+import { hostNameTextState } from "../../atoms/dns/hostNameText";
+import HostRecordItem from "./HostRecordItem";
+
+const HostRecords = () => {
+  const [hostName, setHostName] = useRecoilState(hostNameTextState);
   const [quantity, setQuantity] = useState(1);
   const [responseData, setResponseData] = React.useState("");
   const [dnsData, setDnsData] = useState([]);
@@ -33,7 +37,7 @@ const HostRecords = (props) => {
       .post("http://localhost:9000/infoblox/addHostRecord", datamain)
       .then((response) => {
         setResponseData(response.data);
-        getDNS()
+        getDNS();
       })
       .catch((err) => {
         console.error(err);
@@ -58,16 +62,14 @@ const HostRecords = (props) => {
 
   const fieldRows = (val) => {
     return (
-      <div className="form-row">
-        <div className="form-group col-md-6">
-          <label>IP {val}:</label>
-          <input
-            type="text"
-            className="form-control"
-            name={`ip_${val}`}
-            ref={register({ required: true })}
-          />
-        </div>
+      <div className="form-group">
+        <label className={"d-block mb-2 font-weight-bold"}>IP {val}:</label>
+        <input
+          type="text"
+          className="form-control"
+          name={`ip_${val}`}
+          ref={register({ required: true })}          
+        />
       </div>
     );
   };
@@ -83,39 +85,86 @@ const HostRecords = (props) => {
 
   const deleteRecord = (id, name) => {
     axios
-      .post("http://localhost:9000/infoblox/deleteHostRecord", { id, name }, {
+      .post(
+        "http://localhost:9000/infoblox/deleteHostRecord",
+        { id, name },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((resp) => {
+        getDNS();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const updateClicked = (data) => {
+    const ipAdd = [];
+    delete data.numberOfIps;
+    delete data.ip_1;
+    const eHostName = data.e_host_name;
+    delete data.e_host_name;
+
+    Object.keys(data).length > 0 &&
+      Object.keys(data).forEach((val) => {
+        ipAdd.push({
+          ipv4addr: data[val],
+        });
+      });
+
+    const d = {
+      hostName: eHostName,
+      ipv4addrs: { ipv4addrs: ipAdd },
+    };
+
+    axios
+      .post("http://localhost:9000/infoblox/updateHostIP", d, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((resp) => {
         console.log(resp);
-        getDNS()
+        getDNS();
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  
+
   return (
     <div className="m-bottom">
       <form onSubmit={handleSubmit(onFormSubmit)}>
         <h6>Hostname</h6>
-        <div className="form-group">
-          <div className="form-row">
-            <div className=" col-md-6">
-              <label>Hostname</label>
+        <div className="row d-flex">
+          <div className=" col-md-4">
+            <div className={"form-group"}>
+              <label className={"d-block mb-2 font-weight-bold"}>
+                Hostname
+              </label>
               <input
                 type="text"
                 className="form-control"
                 name="hostname"
                 onChange={(e) => setHostName(e.target.value)}
+                value={hostName}
               />
             </div>
-            <div className=" col-md-6">
-              <label htmlFor="exampleFormControlSelect2">Number of IPs</label>
+          </div>          
+          <div className=" col-md-4">
+            <div className={"form-group"}>
+              <label
+                htmlFor="exampleFormControlSelect2"
+                className={"d-block mb-2 font-weight-bold"}
+              >
+                Number of IPs
+              </label>
               <select
-                className="form-control"
+                className="custom-select"
                 id="exampleFormControlSelect2"
                 name="numberOfIps"
                 onChange={(e) => setQuantity(e.target.value)}
@@ -128,8 +177,11 @@ const HostRecords = (props) => {
               </select>
             </div>
           </div>
+          <div className="col-md-4">
+            <div className={"form-group"}>{renderTxtFields()}</div>
+          </div>
         </div>
-        {renderTxtFields()}
+
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
@@ -144,46 +196,16 @@ const HostRecords = (props) => {
           Record Added
         </div>
       ) : (
-        <div></div>
+        <div>&nbsp;</div>
       )}
-      <div >
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>IP</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {dnsData.length > 0 &&
-              dnsData.map((d) => {
-                return (
-                  <tr>
-                    <td>{d.name}</td>
-                    <td>
-                      {JSON.parse(d.ipv4addrs).length > 0 &&
-                        JSON.parse(d.ipv4addrs).map((ipAddress) => {
-                          return (
-                              <>
-                                <span>{ipAddress.ipv4addr}</span>,  
-                              </>
-                          )
-                        })}
-                    </td>
-                    <td>
-                      <span style={{ cursor: "pointer" }} onClick={() => deleteRecord(d.id, d.name)}>Delete</span>
-                    </td>
-
-                    <td>
-                      <span style={{ cursor: "pointer" }} >Edit</span>
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
+      <div>
+        <HostRecordItem
+          dnsData={dnsData}
+          deleteRecord={deleteRecord}
+          register={register}
+          handleSubmit={handleSubmit}
+          updateClicked={updateClicked}
+        />
       </div>
     </div>
   );

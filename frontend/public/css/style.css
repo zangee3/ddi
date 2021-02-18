@@ -23,7 +23,9 @@
 	font-size: calc(10px + 2vmin);
 	color: white;
 }
-
+.btn:focus, .btn.focus{
+	box-shadow: none;
+}
 .App-link {
 	color: #61dafb;
 }
