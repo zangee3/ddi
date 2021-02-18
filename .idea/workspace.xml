@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="458fce96-6a98-4753-aedc-b0d658fcce4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/Components/HostRecordItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/Components/dynamicRenderInput.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Components/HostRecordItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Components/HostRecordItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/Components/HostRecords.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Components/HostRecords.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +24,7 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="1nap04Fr3Ieai3b0BuqUrTxNVLc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -44,7 +41,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/frontend/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />

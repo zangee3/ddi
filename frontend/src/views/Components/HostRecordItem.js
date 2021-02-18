@@ -3,19 +3,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import swal from "sweetalert";
 import Modal from "react-bootstrap/Modal";
+import axios from "axios";
+import { useForm } from "react-hook-form";
 
 const totalInputAllowed = 4;
 
 const HostRecordItem = ({
   dnsData,
   deleteRecord,
-  register,
-  handleSubmit,
-  updateClicked,
+
+  getDns,
 }) => {
   const [show, setShow] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [singleData, setSingleData] = useState({});
+  const { register, handleSubmit } = useForm();
 
   const confirmDelete = (id, name) => {
     swal({
@@ -28,6 +30,41 @@ const HostRecordItem = ({
         deleteRecord(id, name);
       }
     });
+  };
+
+  const updateClicked = (data) => {
+
+    const ipAdd = [];
+    delete data.numberOfIps;
+    delete data.ip_1;
+    const eHostName = data.e_host_name;
+    delete data.e_host_name;
+
+    Object.keys(data).length > 0 &&
+      Object.keys(data).forEach((val) => {
+        ipAdd.push({
+          ipv4addr: data[val],
+        });
+      });
+
+    const d = {
+      hostName: eHostName,
+      ipv4addrs: { ipv4addrs: ipAdd },
+    };
+
+    axios
+      .post("http://localhost:9000/infoblox/updateHostIP", d, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((resp) => {
+        console.log(resp);
+        getDns();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -149,11 +186,13 @@ const HostRecordItem = ({
                                 <span
                                   style={{ cursor: "pointer" }}
                                   onClick={() => {
-                                    const copySingleData = singleData
+                                    const copySingleData = singleData;
                                     const removeData = {
                                       ...copySingleData,
                                       ipv4addrs: JSON.stringify(
-                                        JSON.parse(copySingleData.ipv4addrs).filter(
+                                        JSON.parse(
+                                          copySingleData.ipv4addrs
+                                        ).filter(
                                           (d) => d.ipv4addr != ipData.ipv4addr
                                         )
                                       ),
