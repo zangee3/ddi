@@ -69,6 +69,17 @@ const HostRecordItem = ({
 
   return (
     <React.Fragment>
+      {responseData.Error !== undefined ? (
+        <div className="alert alert-danger" role="alert">
+          {responseData.Error}
+        </div>
+      ) : responseData.result !== undefined ? (
+        <div className="alert alert-success" role="alert">
+          Record Deleted
+        </div>
+      ) : (
+        <div>&nbsp;</div>
+      )}
       <table className="table table-bordered bg-white">
         <thead>
           <tr>
