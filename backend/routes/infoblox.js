@@ -74,7 +74,7 @@ router.post("/updateHostIP", function (req, res, next) {
   };
 
   return request(options, function (error, response, body) {
-      console.log(response, body, options.body);
+      console.log( body);
 
     if (!error && response.statusCode >= 200) {
       const sql =
@@ -120,6 +120,7 @@ router.post("/deleteHostRecord", function (req, res, next) {
   };
 
   return request(options, function (error, response, body) {
+    console.log( body);
     if (!error && response.statusCode >= 200) {
       return connection.query(
         "DELETE FROM dns WHERE id = '" + recordId + "'",

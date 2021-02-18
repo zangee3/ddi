@@ -131,6 +131,17 @@ const HostRecordItem = ({
         <Modal.Body>
           {editMode && (
             <div>
+              {responseData.Error !== undefined ? (
+                <div className="alert alert-danger" role="alert">
+                  {responseData.Error}
+                </div>
+              ) : responseData.result !== undefined ? (
+                <div className="alert alert-success" role="alert">
+                  Record Added
+                </div>
+              ) : (
+                <div>&nbsp;</div>
+              )}
               <div className="modal-dialog" role="document">
                 <div className="modal-content">
                   <form onSubmit={handleSubmit(updateClicked)}>
