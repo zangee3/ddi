@@ -6,8 +6,7 @@ const connection = require("./db");
 
 router.post("/addHostRecord", function (req, res, next) {
   const options = {
-    url:
-      "https://10.92.18.84/wapi/v2.9/record:host?_return_fields=name,ipv4addrs&_return_as_object=1",
+    url: "https://10.92.18.84/wapi/v2.9/record:host?_return_fields=name,ipv4addrs&_return_as_object=1",
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(req.body),
@@ -63,17 +62,20 @@ router.post("/updateHostIP", function (req, res, next) {
   const dataString = req.body.ipv4addrs;
 
   var options = {
-    url: `https://gridmaster/wapi/v2.11/record:host/ZG5zLmhvc3QkLl9kZWZhdWx0LmNvbS50ZXN0Lmhvc3Qx:${hostName}/default?_return_fields%2B=ipv4addrs&_return_as_object=1`,
+    url: "https://10.92.18.84/wapi/v2.9/record:host/"+hostName+"/default?_return_fields%2B=ipv4addrs&_return_as_object=1",
     method: "PUT",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(dataString),
+    rejectUnauthorized: false,
     auth: {
-      user: "admin",
-      pass: "infoblox",
-    },
+        'user': 'codetesting',
+        'pass': 'D0ntGoB00m!'
+    }
   };
 
   return request(options, function (error, response, body) {
+      console.log(response, body, options.body);
+
     if (!error && response.statusCode >= 200) {
       const sql =
           "UPDATE dns SET ipv4addrs = '" +

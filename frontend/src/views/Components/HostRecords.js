@@ -68,8 +68,7 @@ const HostRecords = () => {
           type="text"
           className="form-control"
           name={`ip_${val}`}
-          ref={register({ required: true })}
-          defaultValue={"test"}
+          ref={register({ required: true })}          
         />
       </div>
     );
@@ -155,8 +154,7 @@ const HostRecords = () => {
                 value={hostName}
               />
             </div>
-          </div>
-          {hostName}
+          </div>          
           <div className=" col-md-4">
             <div className={"form-group"}>
               <label
