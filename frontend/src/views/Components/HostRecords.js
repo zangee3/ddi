@@ -2,18 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useRecoilState } from "recoil";
-import Modal from "react-bootstrap/Modal";
 
 import { hostNameTextState } from "../../atoms/dns/hostNameText";
+import HostRecordItem from "./HostRecordItem";
 
-const HostRecords = (props) => {
+const HostRecords = () => {
   const [hostName, setHostName] = useRecoilState(hostNameTextState);
   const [quantity, setQuantity] = useState(1);
   const [responseData, setResponseData] = React.useState("");
   const [dnsData, setDnsData] = useState([]);
-  const [show, setShow] = useState(false);
-  const [editMode, setEditMode] = useState(false);
-  const [singleData, setSingleData] = useState({});
 
   const { register, handleSubmit } = useForm();
 
@@ -65,17 +62,15 @@ const HostRecords = (props) => {
 
   const fieldRows = (val) => {
     return (
-      <div className="form-row">
-        <div className="form-group col-md-6">
-          <label>IP {val}:</label>
-          <input
-            type="text"
-            className="form-control"
-            name={`ip_${val}`}
-            ref={register({ required: true })}
-            defaultValue={"test"}
-          />
-        </div>
+      <div className="form-group">
+        <label className={"d-block mb-2 font-weight-bold"}>IP {val}:</label>
+        <input
+          type="text"
+          className="form-control"
+          name={`ip_${val}`}
+          ref={register({ required: true })}
+          defaultValue={"test"}
+        />
       </div>
     );
   };
@@ -101,7 +96,6 @@ const HostRecords = (props) => {
         }
       )
       .then((resp) => {
-        console.log(resp);
         getDNS();
       })
       .catch((err) => {
@@ -147,10 +141,12 @@ const HostRecords = (props) => {
     <div className="m-bottom">
       <form onSubmit={handleSubmit(onFormSubmit)}>
         <h6>Hostname</h6>
-        <div className="form-group">
-          <div className="form-row">
-            <div className=" col-md-6">
-              <label>Hostname</label>
+        <div className="row d-flex">
+          <div className=" col-md-4">
+            <div className={"form-group"}>
+              <label className={"d-block mb-2 font-weight-bold"}>
+                Hostname
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -159,11 +155,18 @@ const HostRecords = (props) => {
                 value={hostName}
               />
             </div>
-            {hostName}
-            <div className=" col-md-6">
-              <label htmlFor="exampleFormControlSelect2">Number of IPs</label>
+          </div>
+          {hostName}
+          <div className=" col-md-4">
+            <div className={"form-group"}>
+              <label
+                htmlFor="exampleFormControlSelect2"
+                className={"d-block mb-2 font-weight-bold"}
+              >
+                Number of IPs
+              </label>
               <select
-                className="form-control"
+                className="custom-select"
                 id="exampleFormControlSelect2"
                 name="numberOfIps"
                 onChange={(e) => setQuantity(e.target.value)}
@@ -176,21 +179,14 @@ const HostRecords = (props) => {
               </select>
             </div>
           </div>
+          <div className="col-md-4">
+            <div className={"form-group"}>{renderTxtFields()}</div>
+          </div>
         </div>
-        {renderTxtFields()}
+
         <button type="submit" className="btn btn-primary">
-          {editMode ? "Update" : "Submit"}
+          Submit
         </button>
-        &nbsp;
-        {editMode && (
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={() => setEditMode(false)}
-          >
-            Cancel
-          </button>
-        )}
       </form>
       <br />
       {responseData.Error !== undefined ? (
@@ -202,166 +198,17 @@ const HostRecords = (props) => {
           Record Added
         </div>
       ) : (
-        <div>""</div>
+        <div>&nbsp;</div>
       )}
       <div>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>IP</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {dnsData.length > 0 &&
-              dnsData.map((d) => {
-                return (
-                  <tr>
-                    <td>{d.name}</td>
-                    <td>
-                      {JSON.parse(d.ipv4addrs).length > 0 &&
-                        JSON.parse(d.ipv4addrs).map((ipAddress) => {
-                          return (
-                            <>
-                              <span>{ipAddress.ipv4addr}&nbsp;</span>
-                            </>
-                          );
-                        })}
-                    </td>
-                    <td>
-                      <span
-                        style={{ cursor: "pointer" }}
-                        onClick={() => deleteRecord(d.id, d.name)}
-                      >
-                        Delete
-                      </span>
-                    </td>
-
-                    <td>
-
-                      <span
-                        style={{ cursor: "pointer" }}
-                        onClick={() => {
-                          setShow(true);
-                          setEditMode(true);
-                          setSingleData(d);
-                        }}
-                      >
-                        Edit
-                      </span>
-
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
+        <HostRecordItem
+          dnsData={dnsData}
+          deleteRecord={deleteRecord}
+          register={register}
+          handleSubmit={handleSubmit}
+          updateClicked={updateClicked}
+        />
       </div>
-
-      {/*  Modal starts here */}
-      <Modal
-        show={show}
-        onHide={() => setShow(false)}
-        dialogClassName="modal-90w"
-        aria-labelledby="example-custom-modal-styling-title"
-      >
-        <Modal.Body>
-          {editMode && (
-            <div>
-              <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                  <form onSubmit={handleSubmit(updateClicked)}>
-                    <div className="modal-header">
-                      <button
-                        type="button"
-                        className="close"
-                        onClick={() => setShow(false)}
-                      >
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div className="modal-body">
-                      <div className="form-group">
-                        <label
-                          htmlFor="recipient-name"
-                          className="col-form-label"
-                        >
-                          Host:
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="recipient-name"
-                          defaultValue={singleData.name}
-                          readOnly={true}
-                          name={"e_host_name"}
-                          ref={register({ required: true })}
-                        />
-                      </div>
-
-                      {editMode &&
-                        singleData.ipv4addrs.length > 0 &&
-                        JSON.parse(singleData.ipv4addrs).map((ipData, i) => {
-                          return (
-                            <div className="form-group">
-                              <label
-                                htmlFor="recipient-name"
-                                className="col-form-label"
-                              >
-                                IP:
-                              </label>
-                              <div className={"d-flex"}>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="recipient-name"
-                                    defaultValue={ipData.ipv4addr}
-                                    name={`e_ip_${i}`}
-                                    ref={register({ required: true })}
-                                />
-                                &nbsp;&nbsp;
-                                <span style={{ cursor: "pointer" }} onClick={() => {
-                                  const newData = JSON.parse(singleData.ipv4addrs).filter(data => data.ipv4addr !== ipData.ipv4addr)
-                                  console.log("newData: ", newData)
-                                  // setSingleData({ ...singleData, ipv4addrs: [{ipv4addr:"2.3.4.5"}] })
-                                  // singleData.ipv4addrs = newData
-                                  // singleData.map(dd => {
-                                  //   console.log(dd)
-                                  // })
-                                  // setSingleData(singleData)
-                                  console.log("singleData: ", singleData)
-                                }}>x</span>
-                              </div>
-
-
-                            </div>
-                          );
-                        })}
-                      <button type="submit" className="btn btn-primary">
-                        Add Field
-                      </button>
-                    </div>
-                    <div className="modal-footer">
-                      <button
-                        type="button"
-                        className="btn btn-secondary"
-                        onClick={() => setShow(false)}
-                      >
-                        Close
-                      </button>
-                      <button type="submit" className="btn btn-primary">
-                        Update Host IP
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          )}
-        </Modal.Body>
-      </Modal>
     </div>
   );
 };
