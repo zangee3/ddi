@@ -95,6 +95,7 @@ const HostRecords = () => {
         }
       )
       .then((resp) => {
+		  setResponseData(resp.data);
         getDNS();
       })
       .catch((err) => {

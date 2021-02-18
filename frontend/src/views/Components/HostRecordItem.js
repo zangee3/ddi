@@ -17,6 +17,7 @@ const HostRecordItem = ({
   const [show, setShow] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [singleData, setSingleData] = useState({});
+  const [responseData, setResponseData] = React.useState("");
   const { register, handleSubmit } = useForm();
 
   const confirmDelete = (id, name) => {
@@ -33,7 +34,6 @@ const HostRecordItem = ({
   };
 
   const updateClicked = (data) => {
-
     const ipAdd = [];
     delete data.numberOfIps;
     delete data.ip_1;
@@ -59,7 +59,7 @@ const HostRecordItem = ({
         },
       })
       .then((resp) => {
-        console.log(resp);
+        setResponseData(resp.data);
         getDns();
       })
       .catch((err) => {
