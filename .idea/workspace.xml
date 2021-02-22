@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="458fce96-6a98-4753-aedc-b0d658fcce4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/Components/HostRecordItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/Components/dynamicRenderInput.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Components/HostRecords.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Components/HostRecords.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +60,10 @@
       <workItem from="1613452686822" duration="12567000" />
       <workItem from="1613538444608" duration="21003000" />
       <workItem from="1613624539073" duration="3892000" />
-      <workItem from="1613631575466" duration="13575000" />
+      <workItem from="1613631575466" duration="13757000" />
+      <workItem from="1613729069542" duration="299000" />
+      <workItem from="1613736238632" duration="1138000" />
+      <workItem from="1613969670921" duration="345000" />
     </task>
     <servers />
   </component>
