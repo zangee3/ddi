@@ -6,8 +6,7 @@ const connection = require("./db");
 
 router.post("/addHostRecord", function (req, res, next) {
   const options = {
-    url:
-      "https://10.92.18.84/wapi/v2.9/record:host?_return_fields=name,ipv4addrs&_return_as_object=1",
+    url: "https://10.92.18.84/wapi/v2.9/record:host?_return_fields=name,ipv4addrs&_return_as_object=1",
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(req.body),
@@ -63,32 +62,41 @@ router.post("/updateHostIP", function (req, res, next) {
   const dataString = req.body.ipv4addrs;
 
   var options = {
-    url: `https://gridmaster/wapi/v2.11/record:host/ZG5zLmhvc3QkLl9kZWZhdWx0LmNvbS50ZXN0Lmhvc3Qx:${hostName}/default?_return_fields%2B=ipv4addrs&_return_as_object=1`,
+    url: "https://10.92.18.84/wapi/v2.9/record:host/"+hostName+"/default?_return_fields%2B=ipv4addrs&_return_as_object=1",
     method: "PUT",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(dataString),
+    rejectUnauthorized: false,
     auth: {
-      user: "admin",
-      pass: "infoblox",
-    },
+        'user': 'codetesting',
+        'pass': 'D0ntGoB00m!'
+    }
   };
 
   return request(options, function (error, response, body) {
-    if (!error && response.statusCode >= 200) {
-      const sql =
-          "UPDATE dns SET ipv4addrs = '" +
-          JSON.stringify(dataString.ipv4addrs) +
-          "' WHERE name = '" +
-          hostName +
-          "'";
+      console.log( body);
 
-      return connection.query(sql, (err, result) => {
-        if (err) {
-          console.log(err);
-          return res.status(400).json(err);
+    if (!error && response.statusCode >= 200) {
+        body = JSON.parse(body);
+        console.log(body.Error);
+        if (body.Error === undefined) {  
+        const sql =
+            "UPDATE dns SET ipv4addrs = '" +
+            JSON.stringify(dataString.ipv4addrs) +
+            "' WHERE name = '" +
+            hostName +
+            "'";
+
+        return connection.query(sql, (err, result) => {
+            if (err) {
+            console.log(err);
+            return res.status(400).json(err);
+            }
+            return res.status(200).json(req.body);
+        });
+        }else {
+            return res.status(200).json(body);
         }
-        return res.status(200).json(req.body);
-      });
     } else {
       console.log("error-----", response.statusCode, body);
     }
@@ -99,11 +107,9 @@ router.post("/deleteHostRecord", function (req, res, next) {
   const recordName = req.body.name;
   const recordId = req.body.id;
 
-  var dataString =
-    '[{"method": "STATE:ASSIGN","data":{"host_name": ' +
-    recordName +
-    '}},{"method":"GET","object": "record:host","data":{"name":"##STATE:host_name:##"},"assign_state": {"host_ref": "_ref"},"enable_substitution": true,"discard": true},{"method": "DELETE", "object": "##STATE:host_ref:##","enable_substitution": true,"discard": true},{"method":"STATE:DISPLAY"}]';
-  const options = {
+    var dataString = '[{"method": "STATE:ASSIGN","data":{"host_name": "' + 
+    recordName + '"}},{"method":"GET","object": "record:host","data":{"name":"##STATE:host_name:##"},"assign_state": {"host_ref": "_ref"},"enable_substitution": true,"discard": true},{"method": "DELETE", "object": "##STATE:host_ref:##","enable_substitution": true,"discard": true},{"method":"STATE:DISPLAY"}]';
+    const options = {
     url: "https://10.92.18.84/wapi/v2.9/request",
     method: "POST",
     headers: { "content-type": "application/json" },
@@ -117,18 +123,25 @@ router.post("/deleteHostRecord", function (req, res, next) {
     },
   };
 
-  return request(options, function (error, response, body) {
+  return request(options, function (error, response, body) {    
     if (!error && response.statusCode >= 200) {
+    body = JSON.parse(body);
+    console.log(body.Error);
+    if (body.Error === undefined) {    
       return connection.query(
         "DELETE FROM dns WHERE id = '" + recordId + "'",
         function (err, result) {
           if (err) throw err;
           return res.status(200).json({
             success: true,
+            result: 'sucess',
             message: "Number of records deleted: " + result.affectedRows,
           });
         }
       );
+    } else {
+        return res.status(200).json(body);
+    }
     } else {
       console.log("error-----", response.statusCode, body);
     }

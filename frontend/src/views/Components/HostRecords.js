@@ -69,7 +69,6 @@ const HostRecords = () => {
           className="form-control"
           name={`ip_${val}`}
           ref={register({ required: true })}
-          defaultValue={"test"}
         />
       </div>
     );
@@ -84,58 +83,7 @@ const HostRecords = () => {
     return <div>{rows}</div>;
   };
 
-  const deleteRecord = (id, name) => {
-    axios
-      .post(
-        "http://localhost:9000/infoblox/deleteHostRecord",
-        { id, name },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((resp) => {
-        getDNS();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
-  const updateClicked = (data) => {
-    const ipAdd = [];
-    delete data.numberOfIps;
-    delete data.ip_1;
-    const eHostName = data.e_host_name;
-    delete data.e_host_name;
-
-    Object.keys(data).length > 0 &&
-      Object.keys(data).forEach((val) => {
-        ipAdd.push({
-          ipv4addr: data[val],
-        });
-      });
-
-    const d = {
-      hostName: eHostName,
-      ipv4addrs: { ipv4addrs: ipAdd },
-    };
-
-    axios
-      .post("http://localhost:9000/infoblox/updateHostIP", d, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((resp) => {
-        console.log(resp);
-        getDNS();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
     <div className="m-bottom">
@@ -156,7 +104,6 @@ const HostRecords = () => {
               />
             </div>
           </div>
-          {hostName}
           <div className=" col-md-4">
             <div className={"form-group"}>
               <label
@@ -203,10 +150,9 @@ const HostRecords = () => {
       <div>
         <HostRecordItem
           dnsData={dnsData}
-          deleteRecord={deleteRecord}
           register={register}
           handleSubmit={handleSubmit}
-          updateClicked={updateClicked}
+		  getDns={getDNS}
         />
       </div>
     </div>

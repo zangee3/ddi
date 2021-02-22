@@ -3,19 +3,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import swal from "sweetalert";
 import Modal from "react-bootstrap/Modal";
+import axios from "axios";
+import { useForm } from "react-hook-form";
 
 const totalInputAllowed = 4;
 
-const HostRecordItem = ({
-  dnsData,
-  deleteRecord,
-  register,
-  handleSubmit,
-  updateClicked,
-}) => {
+const HostRecordItem = ({ dnsData, responseD, getDns }) => {
   const [show, setShow] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [singleData, setSingleData] = useState({});
+  const [responseData, setResponseData] = React.useState(responseD);
+  const { register, handleSubmit } = useForm();
 
   const confirmDelete = (id, name) => {
     swal({
@@ -30,8 +28,73 @@ const HostRecordItem = ({
     });
   };
 
+	const deleteRecord = (id, name) => {
+		axios
+			.post(
+				"http://localhost:9000/infoblox/deleteHostRecord",
+				{ id, name },
+				{
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+			)
+			.then((resp) => {
+				setResponseData(resp.data);
+				getDns();
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
+  const updateClicked = (data) => {
+    const ipAdd = [];
+    delete data.numberOfIps;
+    delete data.ip_1;
+    const eHostName = data.e_host_name;
+    delete data.e_host_name;
+
+    Object.keys(data).length > 0 &&
+      Object.keys(data).forEach((val) => {
+        ipAdd.push({
+          ipv4addr: data[val],
+        });
+      });
+
+    const d = {
+      hostName: eHostName,
+      ipv4addrs: { ipv4addrs: ipAdd },
+    };
+
+    axios
+      .post("http://localhost:9000/infoblox/updateHostIP", d, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((resp) => {
+        setResponseData(resp.data);
+        getDns();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <React.Fragment>
+      {responseData.Error !== undefined ? (
+        <div className="alert alert-danger" role="alert">
+          {responseData.Error}
+        </div>
+      ) : responseData.result !== undefined ? (
+        <div className="alert alert-success" role="alert">
+          Record Deleted
+        </div>
+      ) : (
+        <div>&nbsp;</div>
+      )}
       <table className="table table-bordered bg-white">
         <thead>
           <tr>
@@ -94,6 +157,17 @@ const HostRecordItem = ({
         <Modal.Body>
           {editMode && (
             <div>
+              {responseData.Error !== undefined ? (
+                <div className="alert alert-danger" role="alert">
+                  {responseData.Error}
+                </div>
+              ) : responseData.result !== undefined ? (
+                <div className="alert alert-success" role="alert">
+                  Record Added
+                </div>
+              ) : (
+                <div>&nbsp;</div>
+              )}
               <div className="modal-dialog" role="document">
                 <div className="modal-content">
                   <form onSubmit={handleSubmit(updateClicked)}>
@@ -149,11 +223,13 @@ const HostRecordItem = ({
                                 <span
                                   style={{ cursor: "pointer" }}
                                   onClick={() => {
-                                    const copySingleData = singleData
+                                    const copySingleData = singleData;
                                     const removeData = {
                                       ...copySingleData,
                                       ipv4addrs: JSON.stringify(
-                                        JSON.parse(copySingleData.ipv4addrs).filter(
+                                        JSON.parse(
+                                          copySingleData.ipv4addrs
+                                        ).filter(
                                           (d) => d.ipv4addr != ipData.ipv4addr
                                         )
                                       ),
