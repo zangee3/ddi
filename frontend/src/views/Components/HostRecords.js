@@ -34,7 +34,7 @@ const HostRecords = () => {
     };
 
     axios
-      .post('http://localhost:9000/infoblox/addHostRecord', datamain)
+      .post('http://localhost:9000/host/addHostRecord', datamain)
       .then((response) => {
         setResponseData(response.data);
         getDNS();
@@ -46,7 +46,7 @@ const HostRecords = () => {
 
   const getDNS = () => {
     axios
-      .get('http://localhost:9000/infoblox/getHostRecords', {
+      .get('http://localhost:9000/host/getHostRecords', {
         headers: {
           'Content-Type': 'application/json',
         },

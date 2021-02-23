@@ -23,7 +23,7 @@ const routes = [
   { path: "/home",exact:true, name: "home", component: Home },
   {path:"/firewall",exact:true,name:'Firewall',component:Firewall},
   {path:"/network",exact:true,name:'Network',component:Network},
-  {path:"/dns",exact:true,name:'dns',component:DnsSetting},
+  {path:"/ddi",exact:true,name:'ddi',component:DnsSetting},
   { path: "**", component: NoPageFound }
 ];
 

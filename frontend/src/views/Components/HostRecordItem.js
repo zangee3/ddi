@@ -31,7 +31,7 @@ const HostRecordItem = ({ dnsData, responseD, getDns }) => {
   const deleteRecord = (id, name) => {
     axios
       .post(
-        'http://localhost:9000/infoblox/deleteHostRecord',
+        'http://localhost:9000/host/deleteHostRecord',
         { id, name },
         {
           headers: {
@@ -68,7 +68,7 @@ const HostRecordItem = ({ dnsData, responseD, getDns }) => {
     };
 
     axios
-      .post('http://localhost:9000/infoblox/updateHostIP', d, {
+      .post('http://localhost:9000/host/updateHostIP', d, {
         headers: {
           'Content-Type': 'application/json',
         },
