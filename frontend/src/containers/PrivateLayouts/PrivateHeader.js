@@ -21,7 +21,7 @@ const PrivateHeader=()=> {
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="mr-auto">
       <NavLink  to='/home' >HOME</NavLink>
-      <NavLink  to='/dns'>DNS</NavLink>
+      <NavLink  to='/dns'>DDI</NavLink>
       <NavLink  to='/firewall'>FIREWALL</NavLink>
       <NavLink  to='/network'>NETWORK</NavLink>
       <button className="logout-btn" onClick={()=>{

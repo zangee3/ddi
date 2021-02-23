@@ -43,15 +43,25 @@ const DnsSetting = () => {
                                             <Nav.Item>
                                               <Nav.Link eventKey="CNAME Records">CNAME Records</Nav.Link>
                                             </Nav.Item>
-                                            */}
+                                            */}                                        
                     <Nav.Item>
-                      <Nav.Link eventKey="TXT Records">TXT Records</Nav.Link>
+                      <Nav.Link eventKey="DNS">DNS</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link eventKey="MX Records">MX Records</Nav.Link>
+                      <Nav.Link eventKey="Host Records" className="level2">Host Records</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link eventKey="Host Records">Host Records</Nav.Link>
+                      <Nav.Link eventKey="MX Records" className="level2">MX Records</Nav.Link>
+                    </Nav.Item>                    
+                    <Nav.Item>
+                      <Nav.Link eventKey="TXT Records" className="level2">TXT Records</Nav.Link>
+                    </Nav.Item>
+                    
+                    <Nav.Item>
+                      <Nav.Link eventKey="DHCP">DHCP</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey="IPAM">IPAM</Nav.Link>
                     </Nav.Item>
                   </Nav>
                 </div>
@@ -71,6 +81,12 @@ const DnsSetting = () => {
                     </Tab.Pane>
                     <Tab.Pane eventKey="MX Records">
                       <MXOptions />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="DNS">                      
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="DHCP">                      
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="IPAM">                      
                     </Tab.Pane>
                   </Tab.Content>
                 </div>

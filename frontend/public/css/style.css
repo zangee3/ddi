@@ -330,6 +330,10 @@ button.logout-btn {
     max-width: 100%;
 }
 
+.level2 {
+	margin-left: 20px;
+}
+
 @media only screen and (max-width: 1024px) {
 	.navigation a.nav-link:hover {
 		background: none;
