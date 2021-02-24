@@ -90,7 +90,7 @@ const HostRecordItem = ({ dnsData, responseD, getDns }) => {
         </div>
       ) : responseData.result !== undefined ? (
         <div className='alert alert-success' role='alert'>
-          Record Deleted
+          Host Record Deleted
         </div>
       ) : (
         <div></div>
@@ -163,7 +163,7 @@ const HostRecordItem = ({ dnsData, responseD, getDns }) => {
                 </div>
               ) : responseData.result !== undefined ? (
                 <div className='alert alert-success' role='alert'>
-                  Record Added
+                  Host Record Added
                 </div>
               ) : (
                 <div>&nbsp;</div>

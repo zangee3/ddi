@@ -45,7 +45,6 @@ class TxtOptions extends React.Component {
                   className='form-control'
                   id='exampleFormControlSelect2'
                 >
-                  <option value='0'>0</option>
                   <option value='1'>1</option>
                   <option value='2'>2</option>
                   <option value='3'>3</option>
@@ -59,59 +58,15 @@ class TxtOptions extends React.Component {
           {/*<button type="submit" className="btn btn-primary">Submit</button>*/}
           <table className='table table-bordered bg-white mt-5'>
             <thead>
-              <tr>
-                <th>Name</th>
-                <th>IP</th>
+              <tr>                
+                <th>Host</th>
                 <th class='text-center'>Actions</th>
               </tr>
             </thead>
 
             <tbody>
-              <tr>
-                <td>ahmed.test2.com</td>
-                <td>1.1.1.2 / 3.4.5.6</td>
-                <td>
-                  <div className='d-flex justify-content-around'>
-                    <span style={{ cursor: 'pointer' }}>
-                      <FontAwesomeIcon
-                        icon={faTimesCircle}
-                        className={'text-danger'}
-                      />
-                    </span>
-
-                    <span style={{ cursor: 'pointer' }}>
-                      <FontAwesomeIcon
-                        icon={faEdit}
-                        className={'text-primary'}
-                      />
-                    </span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>ahmed.test2.com</td>
-                <td>1.1.1.2 / 3.4.5.6</td>
-                <td>
-                  <div className='d-flex justify-content-around'>
-                    <span style={{ cursor: 'pointer' }}>
-                      <FontAwesomeIcon
-                        icon={faTimesCircle}
-                        className={'text-danger'}
-                      />
-                    </span>
-
-                    <span style={{ cursor: 'pointer' }}>
-                      <FontAwesomeIcon
-                        icon={faEdit}
-                        className={'text-primary'}
-                      />
-                    </span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>ahmed.test2.com</td>
-                <td>1.1.1.2 / 3.4.5.6</td>
+             <tr>
+                <td>@</td>                
                 <td>
                   <div className='d-flex justify-content-around'>
                     <span style={{ cursor: 'pointer' }}>
