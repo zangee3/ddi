@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import axios from "axios";
-import { useRecoilState } from "recoil";
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import { useRecoilState } from 'recoil';
 
-import { hostNameTextState } from "../../atoms/dns/hostNameText";
-import HostRecordItem from "./HostRecordItem";
+import { hostNameTextState } from '../../atoms/dns/hostNameText';
+import HostRecordItem from './HostRecordItem';
 
 const HostRecords = () => {
   const [hostName, setHostName] = useRecoilState(hostNameTextState);
   const [quantity, setQuantity] = useState(1);
-  const [responseData, setResponseData] = React.useState("");
+  const [responseData, setResponseData] = React.useState('');
   const [dnsData, setDnsData] = useState([]);
 
   const { register, handleSubmit } = useForm();
@@ -34,7 +34,7 @@ const HostRecords = () => {
     };
 
     axios
-      .post("http://localhost:9000/infoblox/addHostRecord", datamain)
+      .post('http://localhost:9000/host/addHostRecord', datamain)
       .then((response) => {
         setResponseData(response.data);
         getDNS();
@@ -46,9 +46,9 @@ const HostRecords = () => {
 
   const getDNS = () => {
     axios
-      .get("http://localhost:9000/infoblox/getHostRecords", {
+      .get('http://localhost:9000/host/getHostRecords', {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       })
       .then((resp) => {
@@ -62,11 +62,11 @@ const HostRecords = () => {
 
   const fieldRows = (val) => {
     return (
-      <div className="form-group">
-        <label className={"d-block mb-2 font-weight-bold"}>IP {val}:</label>
+      <div className='form-group'>
+        <label className={'d-block mb-2 font-weight-bold'}>IP {val}:</label>
         <input
-          type="text"
-          className="form-control"
+          type='text'
+          className='form-control'
           name={`ip_${val}`}
           ref={register({ required: true })}
         />
@@ -83,76 +83,74 @@ const HostRecords = () => {
     return <div>{rows}</div>;
   };
 
-
-
   return (
-    <div className="m-bottom">
+    <div className='m-bottom'>
       <form onSubmit={handleSubmit(onFormSubmit)}>
         <h6>Hostname</h6>
-        <div className="row d-flex">
-          <div className=" col-md-4">
-            <div className={"form-group"}>
-              <label className={"d-block mb-2 font-weight-bold"}>
+        <div className='row d-flex'>
+          <div className=' col-md-4'>
+            <div className={'form-group'}>
+              <label className={'d-block mb-2 font-weight-bold'}>
                 Hostname
               </label>
               <input
-                type="text"
-                className="form-control"
-                name="hostname"
+                type='text'
+                className='form-control'
+                name='hostname'
                 onChange={(e) => setHostName(e.target.value)}
                 value={hostName}
               />
             </div>
           </div>
-          <div className=" col-md-4">
-            <div className={"form-group"}>
+          <div className=' col-md-4'>
+            <div className={'form-group'}>
               <label
-                htmlFor="exampleFormControlSelect2"
-                className={"d-block mb-2 font-weight-bold"}
+                htmlFor='exampleFormControlSelect2'
+                className={'d-block mb-2 font-weight-bold'}
               >
                 Number of IPs
               </label>
               <select
-                className="custom-select"
-                id="exampleFormControlSelect2"
-                name="numberOfIps"
+                className='custom-select'
+                id='exampleFormControlSelect2'
+                name='numberOfIps'
                 onChange={(e) => setQuantity(e.target.value)}
                 ref={register({ required: true })}
               >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
               </select>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className={"form-group"}>{renderTxtFields()}</div>
+          <div className='col-md-4'>
+            <div className={'form-group'}>{renderTxtFields()}</div>
           </div>
         </div>
 
-        <button type="submit" className="btn btn-primary">
+        <button type='submit' className='btn btn-primary'>
           Submit
         </button>
       </form>
-      <br />
+
       {responseData.Error !== undefined ? (
-        <div className="alert alert-danger" role="alert">
+        <div className='alert alert-danger' role='alert'>
           {responseData.Error}
         </div>
       ) : responseData.result !== undefined ? (
-        <div className="alert alert-success" role="alert">
+        <div className='alert alert-success' role='alert'>
           Record Added
         </div>
       ) : (
-        <div>&nbsp;</div>
+        <div></div>
       )}
       <div>
         <HostRecordItem
           dnsData={dnsData}
           register={register}
           handleSubmit={handleSubmit}
-		  getDns={getDNS}
+          getDns={getDNS}
         />
       </div>
     </div>

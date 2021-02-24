@@ -96,10 +96,7 @@
 	font-size: 15px;
 }
 
-.form-sec .form-group select.form-control {
-	width: 18%;
-	padding: 0 0 0 10px;
-}
+
 .form-sec .form-group input[type='text']:focus,
 .form-sec .form-group input[type='password']:focus,
 .form-sec .form-group select:focus {
@@ -331,6 +328,10 @@ button.logout-btn {
     position: relative;
     margin: 0 auto;
     max-width: 100%;
+}
+
+.level2 {
+	margin-left: 20px;
 }
 
 @media only screen and (max-width: 1024px) {
