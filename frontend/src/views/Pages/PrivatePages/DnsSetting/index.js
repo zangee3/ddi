@@ -4,20 +4,12 @@ import "../../../../App.css";
 import DNSOptions from "../../../Components/DNSOptions";
 import CNameOptions from "../../../Components/CNameOptions";
 import TxtOptions from "../../../Components/TxtOptions";
-import MXOptions from "../../../Components/MXOptions";
+import MXOptions from "../../../Components/mx/MXOptions";
 import { Nav, Tabs, Tab } from "react-bootstrap";
-import { Redirect } from "react-router-dom";
-import Firewall from "../Firewall";
-import Network from "../Network";
-import Home from "../Home";
-import HostRecords from "../../../Components/HostRecords";
+import HostRecords from "../../../Components/host/HostRecords";
 
 const DnsSetting = () => {
   const [toggleInx, setToggleInx] = useState(false);
-
-  const toggleFunc = () => {
-    setToggleInx(!toggleInx);
-  };
 
   return (
     <div className={`tab-container ${toggleInx ? "active" : "inactive"}`}>
@@ -43,7 +35,7 @@ const DnsSetting = () => {
                                             <Nav.Item>
                                               <Nav.Link eventKey="CNAME Records">CNAME Records</Nav.Link>
                                             </Nav.Item>
-                                            */}                                        
+                                            */}
                     <Nav.Item>
                       <Nav.Link eventKey="DNS">DNS</Nav.Link>
                     </Nav.Item>
@@ -52,11 +44,11 @@ const DnsSetting = () => {
                     </Nav.Item>
                     <Nav.Item>
                       <Nav.Link eventKey="MX Records" className="level2">MX Records</Nav.Link>
-                    </Nav.Item>                    
+                    </Nav.Item>
                     <Nav.Item>
                       <Nav.Link eventKey="TXT Records" className="level2">TXT Records</Nav.Link>
                     </Nav.Item>
-                    
+
                     <Nav.Item>
                       <Nav.Link eventKey="DHCP">DHCP</Nav.Link>
                     </Nav.Item>
@@ -82,11 +74,11 @@ const DnsSetting = () => {
                     <Tab.Pane eventKey="MX Records">
                       <MXOptions />
                     </Tab.Pane>
-                    <Tab.Pane eventKey="DNS">                      
+                    <Tab.Pane eventKey="DNS">
                     </Tab.Pane>
-                    <Tab.Pane eventKey="DHCP">                      
+                    <Tab.Pane eventKey="DHCP">
                     </Tab.Pane>
-                    <Tab.Pane eventKey="IPAM">                      
+                    <Tab.Pane eventKey="IPAM">
                     </Tab.Pane>
                   </Tab.Content>
                 </div>

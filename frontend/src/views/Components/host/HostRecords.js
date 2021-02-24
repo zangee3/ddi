@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+import service from '../../../service/service';
 import { useRecoilState } from 'recoil';
 
-import { hostNameTextState } from '../../atoms/dns/hostNameText';
+import { hostNameTextState } from '../../../atoms/dns/hostNameText';
 import HostRecordItem from './HostRecordItem';
 
 const HostRecords = () => {
@@ -33,8 +33,8 @@ const HostRecords = () => {
       ipv4addrs: ipAdd,
     };
 
-    axios
-      .post('http://localhost:9000/host/addHostRecord', datamain)
+    service
+      .post('/host/addHostRecord', datamain)
       .then((response) => {
         setResponseData(response.data);
         getDNS();
@@ -45,8 +45,8 @@ const HostRecords = () => {
   };
 
   const getDNS = () => {
-    axios
-      .get('http://localhost:9000/host/getHostRecords', {
+    service
+      .get('/host/getHostRecords', {
         headers: {
           'Content-Type': 'application/json',
         },
