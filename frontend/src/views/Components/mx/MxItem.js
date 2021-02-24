@@ -4,18 +4,30 @@ import { faEdit, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { deleteMxRecord, updateMxRecord } from "../../../redux/dns/mx/action";
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
+import swal from "sweetalert";
 
 const MxItem = ({ mx_records, spinner, dispatch }) => {
   const { register, handleSubmit } = useForm();
   const [show, setShow] = useState(false);
   const [singleMx, setSingleMx] = useState({});
 
+
+
   /**
    *
    * @param id
    */
   const deleteRecord = (id) => {
-    dispatch(deleteMxRecord(id));
+	  swal({
+		  title: 'Are you sure?',
+		  icon: 'warning',
+		  buttons: true,
+		  dangerMode: true,
+	  }).then((willDelete) => {
+		  if (willDelete) {
+			  dispatch(deleteMxRecord(id));
+		  }
+	  });
   };
 
   /**

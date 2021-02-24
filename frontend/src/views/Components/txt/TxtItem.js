@@ -4,6 +4,8 @@ import { faEdit, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 import {deleteTxtRecord, updateTxtRecord} from "../../../redux/dns/txt/action";
+import swal from "sweetalert";
+import {deleteMxRecord} from "../../../redux/dns/mx/action";
 
 const TxtItem = ({ tx_records, spinner, dispatch }) => {
   const { register, handleSubmit } = useForm();
@@ -15,7 +17,16 @@ const TxtItem = ({ tx_records, spinner, dispatch }) => {
    * @param id
    */
   const deleteRecord = (id) => {
-    dispatch(deleteTxtRecord(id));
+	  swal({
+		  title: 'Are you sure?',
+		  icon: 'warning',
+		  buttons: true,
+		  dangerMode: true,
+	  }).then((willDelete) => {
+		  if (willDelete) {
+			  dispatch(deleteTxtRecord(id));
+		  }
+	  });
   };
 
   /**
