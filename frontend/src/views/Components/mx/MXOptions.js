@@ -90,12 +90,13 @@ const MXOptions = () => {
                 htmlFor="exampleFormControlSelect2"
                 className="d-block mb-2 font-weight-bold"
               >
-                Number of TXT Records
+                Number of MX Records
               </label>
               <select
                 onChange={(e) => setQuantity(e.target.value)}
                 className="form-control"
                 id="exampleFormControlSelect2"
+                style={{width: '15%'}}
               >
                 <option value="1">1</option>
                 <option value="2">2</option>

@@ -96,6 +96,7 @@ const TxtOptions = () => {
                 onChange={(e) => setQuantity(e.target.value)}
                 className="form-control"
                 id="exampleFormControlSelect2"
+                style={{width: '15%'}}
               >
                 <option value="1">1</option>
                 <option value="2">2</option>

@@ -267,7 +267,7 @@ const HostRecordItem = ({ dnsData, responseD, getDns }) => {
                             }
                           }}
                         >
-                          Add Field
+                          Add IP
                         </button>
                       </div>
                     </div>
