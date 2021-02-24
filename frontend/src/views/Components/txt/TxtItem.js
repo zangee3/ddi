@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import { deleteMxRecord, updateMxRecord } from "../../../redux/dns/mx/action";
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
+import {deleteTxtRecord, updateTxtRecord} from "../../../redux/dns/txt/action";
 
-const MxItem = ({ mx_records, spinner, dispatch }) => {
+const TxtItem = ({ tx_records, spinner, dispatch }) => {
   const { register, handleSubmit } = useForm();
   const [show, setShow] = useState(false);
-  const [singleMx, setSingleMx] = useState({});
+  const [singleTxt, setSingleTxt] = useState({});
 
   /**
    *
    * @param id
    */
   const deleteRecord = (id) => {
-    dispatch(deleteMxRecord(id));
+    dispatch(deleteTxtRecord(id));
   };
 
   /**
@@ -23,8 +23,8 @@ const MxItem = ({ mx_records, spinner, dispatch }) => {
    * @param data
    */
   const updateClicked = (data) => {
-    data.id = singleMx.id;
-    dispatch(updateMxRecord(singleMx.id, data)).then(() => {
+    data.id = singleTxt.id;
+    dispatch(updateTxtRecord(singleTxt.id, data)).then(() => {
       setShow(false);
     });
   };
@@ -44,17 +44,17 @@ const MxItem = ({ mx_records, spinner, dispatch }) => {
           {spinner ? (
             <tr>Loading...</tr>
           ) : (
-            mx_records.length > 0 &&
-            mx_records.map((mx) => {
+              tx_records.length > 0 &&
+              tx_records.map((txt) => {
               return (
                 <tr>
-                  <td>{mx.name}</td>
-                  <td>{mx.mail_exchanger}</td>
+                  <td>{txt.name}</td>
+                  <td>{txt.text}</td>
                   <td>
                     <div className="d-flex justify-content-around">
                       <span
                         style={{ cursor: "pointer" }}
-                        onClick={() => deleteRecord(mx.id)}
+                        onClick={() => deleteRecord(txt.id)}
                       >
                         <FontAwesomeIcon
                           icon={faTimesCircle}
@@ -67,7 +67,7 @@ const MxItem = ({ mx_records, spinner, dispatch }) => {
                           icon={faEdit}
                           className={"text-primary"}
                           onClick={() => {
-                            setSingleMx(mx);
+                            setSingleTxt(txt);
                             setShow(true);
                           }}
                         />
@@ -113,7 +113,7 @@ const MxItem = ({ mx_records, spinner, dispatch }) => {
                         type="text"
                         className="form-control"
                         id="recipient-name"
-                        defaultValue={singleMx.name}
+                        defaultValue={singleTxt.name}
                         name={"name"}
                         ref={register({ required: true })}
                       />
@@ -130,8 +130,8 @@ const MxItem = ({ mx_records, spinner, dispatch }) => {
                         type="text"
                         className="form-control"
                         id="recipient-name"
-                        defaultValue={singleMx.mail_exchanger}
-                        name={"mail_exchanger"}
+                        defaultValue={singleTxt.text}
+                        name={"text"}
                         ref={register({ required: true })}
                       />
                     </div>
@@ -158,4 +158,4 @@ const MxItem = ({ mx_records, spinner, dispatch }) => {
   );
 };
 
-export default MxItem;
+export default TxtItem;

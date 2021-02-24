@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import MxItem from "./MxItem";
+import TxtItem from "./TxtItem";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { createMxRecord, getMxRecords } from "../../../redux/dns/mx/action";
+import { createTxtRecord, getTxtRecords } from "../../../redux/dns/txt/action";
 
-const MXOptions = () => {
+const TxtOptions = () => {
   const [quantity, setQuantity] = useState(1);
   const { register, handleSubmit } = useForm();
 
   const dispatch = useDispatch();
-  const dns = useSelector((state) => state.dns.mx);
+  const dns = useSelector((state) => state.dns.txt);
 
   useEffect(() => {
-    dispatch(getMxRecords());
+    dispatch(getTxtRecords());
   }, []);
 
   /**
@@ -26,11 +26,11 @@ const MXOptions = () => {
       if (value[i] !== undefined) {
         formData.push({
           name: value[i],
-          mail_exchanger: value[`${i}_me`],
+          text: value[`${i}_text`],
         });
       }
     }
-    dispatch(createMxRecord(formData));
+    dispatch(createTxtRecord(formData));
   };
 
   const fieldRows = (val) => {
@@ -51,11 +51,11 @@ const MXOptions = () => {
         <div className=" col-md-6">
           <div className="form-group ">
             <label className="d-block mb-2 font-weight-bold">
-              Domain {val}:
+              Text {val}:
             </label>
             <input
               type="text"
-              name={`${val}_me`}
+              name={`${val}_text`}
               ref={register({ required: true })}
               className="form-control"
               placeholder=""
@@ -70,7 +70,7 @@ const MXOptions = () => {
    *
    * @returns {JSX.Element}
    */
-  const renderMxFields = () => {
+  const renderTxtFields = () => {
     const val = quantity;
     let rows = [];
     for (let i = 1; i <= val; i++) {
@@ -82,7 +82,7 @@ const MXOptions = () => {
   return (
     <div className="m-bottom">
       <form onSubmit={handleSubmit(submitForm)}>
-        <h6>MX Records</h6>
+        <h6>TXT Records</h6>
         <div className="row d-flex">
           <div className="col-md-6 ">
             <div className="form-group ">
@@ -106,7 +106,7 @@ const MXOptions = () => {
             </div>
           </div>
         </div>
-        {renderMxFields()}
+        {renderTxtFields()}
         <button
           type="submit"
           disabled={dns.create_mx_loader}
@@ -115,13 +115,13 @@ const MXOptions = () => {
           {dns.create_mx_loader ? "Saving..." : "Submit"}
         </button>
       </form>
-      <MxItem
-        mx_records={dns.mx_records}
-        spinner={dns.get_mx_loader}
+      <TxtItem
+        tx_records={dns.tx_records}
+        spinner={dns.get_tx_loader}
         dispatch={dispatch}
       />
     </div>
   );
 };
 
-export default MXOptions;
+export default TxtOptions;

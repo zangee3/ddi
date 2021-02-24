@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
-import auth from "./auth/reducer";
-import dns from "./dns/index"
+import mx from "./mx/reducer";
+import txt from "./txt/reducer";
 
 export default combineReducers({
-  auth,
-  dns
+    mx,
+    txt
 });

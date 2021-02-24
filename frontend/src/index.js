@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import 'react-pro-sidebar/dist/css/styles.css';
 import "./index.css";
 import App from "./App";
 import { RecoilRoot } from "recoil";
