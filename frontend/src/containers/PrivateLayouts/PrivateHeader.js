@@ -22,8 +22,12 @@ const PrivateHeader=()=> {
     <Nav className="mr-auto">
       <NavLink  to='/home' >HOME</NavLink>
       <NavLink  to='/ddi'>DDI</NavLink>
-      <NavLink  to='/firewall'>FIREWALL</NavLink>
-      <NavLink  to='/network'>NETWORK</NavLink>
+      {
+        /*
+        <NavLink  to='/firewall'>FIREWALL</NavLink>
+        <NavLink  to='/network'>NETWORK</NavLink>
+        */
+      }      
       <button className="logout-btn" onClick={()=>{
           dispatch(logout())
       }}>Log out</button>
