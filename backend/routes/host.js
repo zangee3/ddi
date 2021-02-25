@@ -23,12 +23,15 @@ router.post("/addHostRecord", function (req, res, next) {
       body = JSON.parse(body);
       console.log(body.Error);
       if (body.Error === undefined) {
+        console.log("BODY-----", body.result._ref)
         const newBody = JSON.parse(options.body);
         return connection.query(
-          "INSERT INTO dns (name, ipv4addrs) VALUES ('" +
+          "INSERT INTO dns (name, ipv4addrs, ref) VALUES ('" +
             newBody.name +
             "', '" +
-            JSON.stringify(newBody.ipv4addrs) +
+            JSON.stringify(newBody.ipv4addrs) + 
+            "', '" +
+            body.result._ref +
             "')",
           (err, result) => {
             if (err) {
