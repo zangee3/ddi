@@ -1,15 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import 'react-pro-sidebar/dist/css/styles.css';
+import "react-pro-sidebar/dist/css/styles.css";
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 import "./index.css";
 import App from "./App";
-import { RecoilRoot } from "recoil";
 
 ReactDOM.render(
   <React.StrictMode>
-    <RecoilRoot>
-      <App />
-    </RecoilRoot>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

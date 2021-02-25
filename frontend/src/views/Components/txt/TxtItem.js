@@ -5,7 +5,6 @@ import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 import {deleteTxtRecord, updateTxtRecord} from "../../../redux/dns/txt/action";
 import swal from "sweetalert";
-import {deleteMxRecord} from "../../../redux/dns/mx/action";
 
 const TxtItem = ({ tx_records, spinner, dispatch }) => {
   const { register, handleSubmit } = useForm();

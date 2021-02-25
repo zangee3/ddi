@@ -1,5 +1,6 @@
 import { txt } from "./type";
 import service from "../../../service/service";
+import {commonErrorOrSuccess} from "../../../utils/commonToastr";
 
 /**
  *
@@ -18,10 +19,16 @@ export const createTxtSpinner = (value) => {
  * @returns {Promise<function(*): void>}
  */
 export const createTxtRecord = (data) => (dispatch) => {
-  dispatch(createTxtSpinner(true))
-  service.post("/txt/addTXTRecord", data).then((response) => {
+  dispatch(createTxtSpinner(true));
+  return service.post("/txt/addTXTRecord", data).then((response) => {
     dispatch(createTxtSpinner(false));
-    dispatch(getTxtRecords())
+    commonErrorOrSuccess({
+      data: response.data,
+      dispatch,
+      message: "Txt Record added successfully",
+      refreshFunction: getTxtRecords,
+      type: "success"
+    });
   });
 };
 
@@ -44,31 +51,40 @@ export const getTxtSpinner = (value) => {
  */
 export const setTxtRecords = (value) => ({
   type: txt.SET_TXT_RECORDS,
-  payload: value
-})
+  payload: value,
+});
 
 /**
  *
  * @returns {function(*): void}
  */
-export const getTxtRecords = () => dispatch => {
-  dispatch(getTxtSpinner(true))
-  return service.get("/txt/getTXTRecords").then(response => {
-    dispatch(getTxtSpinner(false))
-    dispatch(setTxtRecords(response.data))
-  })
-}
+export const getTxtRecords = () => (dispatch) => {
+  dispatch(getTxtSpinner(true));
+  return service.get("/txt/getTXTRecords").then((response) => {
+    dispatch(getTxtSpinner(false));
+    if(response && response.data !== undefined) {
+      dispatch(setTxtRecords(response.data));
+    }
+
+  });
+};
 
 /**
  *
  * @param id
  * @returns {function(*): Promise<void>}
  */
-export const deleteTxtRecord = (id) => dispatch =>{
+export const deleteTxtRecord = (id) => (dispatch) => {
   return service.post("/txt/deleteTXTRecord", { id }).then((response) => {
-    dispatch(getTxtRecords());
+    commonErrorOrSuccess({
+      data: response.data,
+      dispatch,
+      message: "Txt Record deleted",
+      refreshFunction: getTxtRecords,
+      type: "error"
+    });
   });
-}
+};
 
 /**
  *
@@ -76,8 +92,14 @@ export const deleteTxtRecord = (id) => dispatch =>{
  * @param data
  * @returns {function(*): Promise<void>}
  */
-export const updateTxtRecord = (id, data) => dispatch => {
-  return service.post("/txt/updateTXTRecord", { id, data }).then(response => {
-    dispatch(getTxtRecords())
-  })
-}
+export const updateTxtRecord = (id, data) => (dispatch) => {
+  return service.post("/txt/updateTXTRecord", { id, data }).then((response) => {
+    commonErrorOrSuccess({
+      data: response.data,
+      dispatch,
+      message: "Txt Record updated successfully",
+      refreshFunction: getTxtRecords,
+      type: "success"
+    });
+  });
+};

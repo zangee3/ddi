@@ -10,20 +10,6 @@ router.post("/addMXRecord", function (req, res, next) {
     const name = b.name;
     const mailExchanger = b.mail_exchanger;
 
-    // return connection.query(
-    //   "INSERT INTO mx (name, mail_exchanger) VALUES ('" +
-    //     name +
-    //     "', '" +
-    //     mailExchanger +
-    //     "')",
-    //   (err, result) => {
-    //     if (err) {
-    //       console.log(err);
-    //       return res.status(400).json(err);
-    //     }
-    //   }
-    // );
-
     var dataString = '{"mail_exchanger": ' + JSON.stringify(mailExchanger) + ', "name": ' + JSON.stringify(name) + ', "preference":1}';
     console.log("DATA:----", dataString);
     var options = {
@@ -46,10 +32,11 @@ router.post("/addMXRecord", function (req, res, next) {
             if (body.Error === undefined) {
                 const newBody = JSON.parse(options.body);
                 return connection.query(
-                    "INSERT INTO mx (name, mail_exchanger) VALUES ('" +
+                    "INSERT INTO mx (name, mail_exchanger, ref) VALUES ('" +
                     newBody.name +
                     "', '" +
                     JSON.stringify(newBody.mail_exchanger) +
+
                     "')",
                     (err, result) => {
                         if (err) {
@@ -83,7 +70,7 @@ router.post("/deleteMXRecord", function (req, res, next) {
     url: 'https://10.92.18.84/wapi/v2.9/record:mx/ZG5zLmJpbmRfbXgkLl9kZWZhdWx0LmNvbS5pbmZvLm1haWwuZXhjaGFuZ2UuaW5mby5jb20uMQ:mail.info.com/default?_return_as_object=1',
     method: 'DELETE',
     headers: { 'content-type': 'application/json' },
-    body: dataString,
+    body: "",
     rejectUnauthorized: false,
     requestCert: true,
     agent: false,

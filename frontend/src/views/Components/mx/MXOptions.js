@@ -6,7 +6,7 @@ import { createMxRecord, getMxRecords } from "../../../redux/dns/mx/action";
 
 const MXOptions = () => {
   const [quantity, setQuantity] = useState(1);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const dispatch = useDispatch();
   const dns = useSelector((state) => state.dns.mx);
@@ -30,7 +30,9 @@ const MXOptions = () => {
         });
       }
     }
-    dispatch(createMxRecord(formData));
+    dispatch(createMxRecord(formData)).then(() => {
+      reset()
+    })
   };
 
   const fieldRows = (val) => {

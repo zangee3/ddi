@@ -28,6 +28,7 @@ router.post("/addTXTRecord", function (req, res, next) {
 });
 
 router.get("/getTXTRecords", function (req, res, next) {
+    // return res.status(400).json({ a: "hello" });
     return connection.query("SELECT * from txt", (err, result) => {
         if (err) {
             console.log(err);

@@ -6,7 +6,7 @@ import { createTxtRecord, getTxtRecords } from "../../../redux/dns/txt/action";
 
 const TxtOptions = () => {
   const [quantity, setQuantity] = useState(1);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const dispatch = useDispatch();
   const dns = useSelector((state) => state.dns.txt);
@@ -30,7 +30,9 @@ const TxtOptions = () => {
         });
       }
     }
-    dispatch(createTxtRecord(formData));
+    dispatch(createTxtRecord(formData)).then(() => {
+      reset()
+    })
   };
 
   const fieldRows = (val) => {
