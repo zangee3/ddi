@@ -26,17 +26,21 @@ router.post("/addMXRecord", function (req, res, next) {
         }
     };
 
-    return request(options, function (error, response, body) {
-      console.log("ERROR-----", error);
+    return request(options, function (error, response, body) {      
         if (!error && response.statusCode >= 200) {
+            const respBody = JSON.parse(body);
+            console.log("Error----", error);
             if (body.Error === undefined) {
+              console.log("Body-----", respBody);
                 const newBody = JSON.parse(options.body);
+                console.log("Body-----", newBody);
                 return connection.query(
                     "INSERT INTO mx (name, mail_exchanger, ref) VALUES ('" +
                     newBody.name +
                     "', '" +
-                    JSON.stringify(newBody.mail_exchanger) +
-
+                    newBody.mail_exchanger +
+                    "', '" +
+                    respBody.result._ref +
                     "')",
                     (err, result) => {
                         if (err) {
