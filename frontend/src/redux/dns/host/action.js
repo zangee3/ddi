@@ -21,7 +21,8 @@ export const createHostSpinner = (value) => {
 export const createHostRecord = (data) => (dispatch) => {
   dispatch(createHostSpinner(true));
   return service.post("/host/addHostRecord", data).then((response) => {
-    const { data } = response.data;
+    const data = response.data;
+    
     dispatch(createHostSpinner(false));
     commonErrorOrSuccess({
       data: data,

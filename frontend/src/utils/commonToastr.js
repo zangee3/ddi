@@ -13,15 +13,16 @@ export const commonErrorOrSuccess = ({
   refreshFunction,
   type,
 }) => {
+
   if (data.Error !== undefined) {
     toastr.error("Oops!", data.Error);
   } else {
 
     if (type === "success") {
-      toastr.success("Great!", `${message} `);
+      toastr.success("", `${message} `);
       dispatch(refreshFunction());
     } else if (type === "error") {
-      toastr.error("Bammer!", `${message} `);
+      toastr.error("", `${message} `);
       dispatch(refreshFunction());
     }
   }

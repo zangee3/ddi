@@ -80,7 +80,7 @@ export const deleteMxRecord = (id) => (dispatch) => {
       dispatch: dispatch,
       message: "MX Record deleted!",
       refreshFunction: getMxRecords,
-      type: "error",
+      type: "success",
     });
   });
 };
