@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var txtRouter = require('./routes/txt');
 var hostRouter = require("./routes/host");
 var mxRouter = require('./routes/mx');
+var authRouter = require('./routes/auth');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/auth', authRouter);
 app.use('/txt', txtRouter);
 app.use('/mx', mxRouter);
 app.use("/host", hostRouter);

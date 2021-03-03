@@ -69,7 +69,6 @@ const Login = () => {
               <label htmlFor="exampleInputPassword1">Password</label>
               <input
                 type="password"
-                id="passInput"
                 className="form-control"
                 id="exampleInputPassword1"
                 placeholder="Password"
