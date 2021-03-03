@@ -3,6 +3,9 @@ const router = express.Router();
 const request = require("request");
 const fs = require("fs");
 const connection = require("./db");
+const config = require("../env.json");
+
+console.log("Config", config);
 
 router.post("/addMXRecord", function (req, res, next) {
   const bodyData = req.body;
@@ -13,7 +16,7 @@ router.post("/addMXRecord", function (req, res, next) {
     var dataString = '{"mail_exchanger": ' + JSON.stringify(mailExchanger) + ', "name": ' + JSON.stringify(name) + ', "preference":1}';
     console.log("DATA:----", dataString);
     var options = {
-        url: 'https://10.92.18.84/wapi/v2.9/record:mx?_return_fields%2B=mail_exchanger,name&_return_as_object=1',
+        url: config.baseUrl + '/record:mx?_return_fields%2B=mail_exchanger,name&_return_as_object=1',
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: dataString,
@@ -21,8 +24,8 @@ router.post("/addMXRecord", function (req, res, next) {
         requestCert: true,
         agent: false,
         auth: {
-            'user': 'codetesting',
-            'pass': 'D0ntGoB00m!'
+            'user': config.auth.user,
+            'pass': config.auth.pass
         }
     };
 
@@ -71,7 +74,7 @@ router.get("/getMXRecords", function (req, res, next) {
 router.post("/deleteMXRecord", function (req, res, next) {
   const id = req.body.id;
   var options = {
-    url: 'https://10.92.18.84/wapi/v2.9/record:mx/ZG5zLmJpbmRfbXgkLl9kZWZhdWx0LmNvbS5pbmZvLm1haWwuZXhjaGFuZ2UuaW5mby5jb20uMQ:mail.info.com/default?_return_as_object=1',
+    url: config.baseUrl + '/record:mx/ZG5zLmJpbmRfbXgkLl9kZWZhdWx0LmNvbS5pbmZvLm1haWwuZXhjaGFuZ2UuaW5mby5jb20uMQ:mail.info.com/default?_return_as_object=1',
     method: 'DELETE',
     headers: { 'content-type': 'application/json' },
     body: "",
@@ -79,8 +82,8 @@ router.post("/deleteMXRecord", function (req, res, next) {
     requestCert: true,
     agent: false,
     auth: {
-      'user': 'codetesting',
-      'pass': 'D0ntGoB00m!'
+      'user': config.auth.user,
+      'pass': config.auth.pass
     }
   };
   return connection.query(
