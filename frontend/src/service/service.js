@@ -1,9 +1,10 @@
 import axios from "axios";
 import { getHostRecords } from "../redux/dns/host/action";
 import { toastr } from "react-redux-toastr";
-
+const config = require("../env.json");
+console.log("Config:--", config.baseURL);
 export const service = axios.create({
-  baseURL: "http://localhost:9000",
+  baseURL: config.baseURL
 });
 
 service.interceptors.response.use(
