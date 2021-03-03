@@ -3,6 +3,7 @@ const router = express.Router();
 const request = require("request");
 const fs = require("fs");
 const connection = require("./db");
+const config = require("../env.json");
 
 router.post("/addTXTRecord", function (req, res, next) {
     const bodyData = req.body;

@@ -3,10 +3,11 @@ const router = express.Router();
 const request = require("request");
 const fs = require("fs");
 const connection = require("./db");
+const config = require("../env.json");
 
 router.post("/addHostRecord", function (req, res, next) {
   const options = {
-    url: "https://10.92.18.84/wapi/v2.9/record:host?_return_fields=name,ipv4addrs&_return_as_object=1",
+    url: config.baseUrl + "/record:host?_return_fields=name,ipv4addrs&_return_as_object=1",
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(req.body),
@@ -14,8 +15,8 @@ router.post("/addHostRecord", function (req, res, next) {
     requestCert: true,
     agent: false,
     auth: {
-      user: "codetesting",
-      pass: "D0ntGoB00m!",
+      'user': config.auth.user,
+      'pass': config.auth.pass
     },
   };
   return request(options, function (error, response, body) {
@@ -65,14 +66,14 @@ router.post("/updateHostIP", function (req, res, next) {
   const dataString = req.body.ipv4addrs;
 
   var options = {
-    url: "https://10.92.18.84/wapi/v2.9/record:host/"+hostName+"/default?_return_fields%2B=ipv4addrs&_return_as_object=1",
+    url: config.baseUrl + "/record:host/"+hostName+"/default?_return_fields%2B=ipv4addrs&_return_as_object=1",
     method: "PUT",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(dataString),
     rejectUnauthorized: false,
     auth: {
-        'user': 'codetesting',
-        'pass': 'D0ntGoB00m!'
+      'user': config.auth.user,
+      'pass': config.auth.pass
     }
   };
 
@@ -113,7 +114,7 @@ router.post("/deleteHostRecord", function (req, res, next) {
     var dataString = '[{"method": "STATE:ASSIGN","data":{"host_name": "' + 
     recordName + '"}},{"method":"GET","object": "record:host","data":{"name":"##STATE:host_name:##"},"assign_state": {"host_ref": "_ref"},"enable_substitution": true,"discard": true},{"method": "DELETE", "object": "##STATE:host_ref:##","enable_substitution": true,"discard": true},{"method":"STATE:DISPLAY"}]';
     const options = {
-    url: "https://10.92.18.84/wapi/v2.9/request",
+    url: config.baseUrl + "/request",
     method: "POST",
     headers: { "content-type": "application/json" },
     body: dataString,
@@ -121,8 +122,8 @@ router.post("/deleteHostRecord", function (req, res, next) {
     requestCert: true,
     agent: false,
     auth: {
-      user: "codetesting",
-      pass: "D0ntGoB00m!",
+      'user': config.auth.user,
+      'pass': config.auth.pass
     },
   };
 
