@@ -3,8 +3,11 @@ const router = express.Router();
 const request = require("request");
 const fs = require("fs");
 const connection = require("./db");
-const config = require("../env.json");
+const envData = require("../env.json");
+const config = envData[process.env.NODE_ENV];
 
+// console.log("ENVIRONMENT: ", process.env.NODE_ENV);
+// console.log("Config", config);
 router.post("/addHostRecord", function (req, res, next) {
   const options = {
     url: config.baseUrl + "/record:host?_return_fields=name,ipv4addrs&_return_as_object=1",

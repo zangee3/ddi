@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start_local": "NODE_ENV=local node ./bin/www",
+    "start_dev": "NODE_ENV=dev node ./bin/www",
+    "start_staging": "NODE_ENV=staging node ./bin/www",
+    "start_prod": "NODE_ENV=prod node ./bin/www"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.6.1",
