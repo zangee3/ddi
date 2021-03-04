@@ -8,10 +8,10 @@ const IdentityProvider = saml.IdentityProvider;
 
 // Configure your endpoint for IdP-initiated / SP-initiated SSO
 const sp = ServiceProvider({
-    metadata: fs.readFileSync('/xml/metadata_sp.xml')
+    metadata: fs.readFileSync(__dirname + '/../xml/metadata_sp.xml')
 });
 const idp = IdentityProvider({
-    metadata: fs.readFileSync('/xml/onelogin_metadata_487043.xml')
+    metadata: fs.readFileSync(__dirname + '/../xml/onelogin_metadata_487043.xml')
 });
 
 // Release the metadata publicly
