@@ -37,7 +37,10 @@
     "yarn": "^1.22.10"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start_local": "REACT_APP_NODE_ENV=local react-scripts start",
+    "start_dev": "REACT_APP_NODE_ENV=dev react-scripts start",
+    "start_staging": "REACT_APP_NODE_ENV=staging react-scripts start",
+    "start_prod": "REACT_APP_NODE_ENV=prod react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
