@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start_local": "PORT=9000 NODE_ENV=local node ./bin/www",
+    "start_local": "PORT=3000 NODE_ENV=local node ./bin/www",
     "start_dev": "PORT=9000 NODE_ENV=dev node ./bin/www",
     "start_staging": "PORT=9000 NODE_ENV=staging node ./bin/www",
     "start_prod": "PORT=9000 NODE_ENV=prod node ./bin/www"
@@ -23,6 +23,6 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.7",
     "request": "^2.88.2",
-    "samlify": "^2.7.6"
+    "samlify": "^2.5.0"
   }
 }
