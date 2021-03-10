@@ -53,11 +53,14 @@ router.get('/metadata', (req, res) => {
 // If your application only supports IdP-initiated SSO, just make this route is enough
 // This is the assertion service url where SAML Response is sent to
 router.post('/acs', (req, res) => {
-    // sp.parseLoginResponse(idp, 'post', req)
-    //     .then(parseResult => {
-    //         // ...
-    //         console.log("parseResult: ", parseResult)
-    //     })
-    //     .catch(console.error);
+    console.log('/acs')
+    sp.parseLoginResponse(idp, 'post', req)
+        .then(parseResult => {
+            // ...
+            console.log("parseResult: ", parseResult)
+        })
+        .catch(err => {
+            console.log('err: ', err)
+        });
 });
 module.exports = router;
