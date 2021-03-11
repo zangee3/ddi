@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
 var saml = require('passport-saml');
+var router = express.Router();
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -25,11 +26,11 @@ var samlStrategy = new saml.Strategy({
   issuer: process.env.ISSUER,
   identifierFormat: null,
   // Service Provider private key
-  decryptionPvk: fs.readFileSync(__dirname + '/key.pem', 'utf8'),
+  decryptionPvk: fs.readFileSync(__dirname + '/../cert/key.pem', 'utf8'),
   // Service Provider Certificate
-  privateCert: fs.readFileSync(__dirname + '/key.pem', 'utf8'),
+  privateKey: fs.readFileSync(__dirname + '/../cert/key.pem', 'utf8'),
   // Identity Provider's public key
-  cert: fs.readFileSync(__dirname + '/idp_cert.pem', 'utf8'),
+  cert: fs.readFileSync(__dirname + '/../cert/idp_cert.pem', 'utf8'),
   validateInResponseTo: false,
   disableRequestedAuthnContext: true
 }, function(profile, done) {
@@ -38,10 +39,32 @@ var samlStrategy = new saml.Strategy({
 
 passport.use(samlStrategy);
 
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated())
+      return next();
+    else
+      return res.redirect('/login');
+  }
+  
+  router.get('/',
+    ensureAuthenticated, 
+    function(req, res) {
+      console.log("line : 59, /");
+      res.send('Authenticated');
+    }
+  );
+  router.get('/login',
+  passport.authenticate('saml', { failureRedirect: '/login/fail' }),
+  function (req, res) {
+    console.log("line : 67, /login");
+    res.redirect('/');
+  }
+);
+
 // Release the metadata publicly
 router.get('/metadata', (req, res) => {
     res.type('application/xml');
-    res.status(200).send(samlStrategy.generateServiceProviderMetadata(fs.readFileSync(__dirname + '/cert.pem', 'utf8')));
+    res.status(200).send(samlStrategy.generateServiceProviderMetadata(fs.readFileSync(__dirname + '/../cert/cert.pem', 'utf8')));
 });
 
 // Access URL for implementing SP-init SSO
