@@ -49,7 +49,7 @@ router.get("/", ensureAuthenticated, function (req, res) {
 
 // passport.authenticate("saml", { failureRedirect: "/login/fail" }),
 
-router.get("/login", function (req, res) {
+router.get("/login", passport.authenticate("saml", { failureRedirect: "/login/fail" }), function (req, res) {
   // const userData = {
   //   issuer: "https://idp.myid-stg.disney.com",
   //   sessionIndex: "fPeUHuImEdxRt44iU-941zzLjZp",
