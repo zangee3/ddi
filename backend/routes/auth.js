@@ -44,22 +44,36 @@ function ensureAuthenticated(req, res, next) {
       return next();
     else
       return res.redirect('/login');
-  }
-  
-  router.get('/',
+}
+router.get('/',
     ensureAuthenticated, 
     function(req, res) {
       console.log("line : 59, /");
       res.send('Authenticated');
     }
   );
-  router.get('/login',
+router.get('/login',
   passport.authenticate('saml', { failureRedirect: '/login/fail' }),
   function (req, res) {
     console.log("line : 67, /login");
     res.redirect('/');
   }
 );
+
+router.post('/login/callback',
+   passport.authenticate('saml', { failureRedirect: '/login/fail' }),
+  function(req, res) {
+      console.log(res.req.user);
+    res.redirect('/');
+  }
+);
+
+router.get('/login/fail', 
+  function(req, res) {
+    res.status(401).send('Login failed');
+  }
+);
+
 
 // Release the metadata publicly
 router.get('/metadata', (req, res) => {
