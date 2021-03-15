@@ -2,7 +2,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { login } from "../../../../redux/auth/action";
 import { useDispatch } from "react-redux";
-
+const envData = require("../../../../env.json");
+const config = envData[process.env.REACT_APP_NODE_ENV];
+console.log(config);
 const Login = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm({
@@ -21,7 +23,7 @@ const Login = () => {
   };
 
   const authenticate = () => {
-    window.location.href = "http://localhost:3000/sso/login";
+    window.location.href = config.baseURL + "/sso/login";
   };
 
   return (
