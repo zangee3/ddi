@@ -2,7 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { login } from "../../../../redux/auth/action";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -10,6 +9,9 @@ const Login = () => {
     mode: "onChange",
   });
 
+  /**
+   * @param value
+   */
   const loginUser = (value) => {
     const loginData = {
       userName: value.email,
@@ -19,7 +21,7 @@ const Login = () => {
   };
 
   const authenticate = () => {
-    window.location.href = "https://idp.myid-stg.disney.com/as/authorization.oauth2?client_id=ddi-dev&response_type=id_token+token&redirect_uri=http://localhost:3000/callback&nonce=APPLICATION_GENERATED_ONE_TIME_NONCE&scope=openid"
+    window.location.href = "http://localhost:3000/sso/login";
   };
 
   return (
@@ -89,8 +91,6 @@ const Login = () => {
             <button type="submit" className="btn btn-primary w-100">
               {"Log In"}
             </button>
-
-            {/*<Dimmer active={loading} inverted><Loader active={loading} className={'lcolor'}/></Dimmer>*/}
           </form>
         </div>
       </div>

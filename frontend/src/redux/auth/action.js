@@ -1,4 +1,4 @@
-import { LOGIN_FAILED, LOGIN_SUCCESS, LOGOUT } from './type';
+import { LOGIN_FAILED, LOGIN_SUCCESS, LOGOUT, SET_USER_DATA } from './type';
 
 const loginData = {
 	userName: 'admin@gmail.com',
@@ -18,6 +18,16 @@ export const login = (data) => async (dispatch) => {
 		});
 	}
 };
+
+/**
+ *
+ * @param data
+ * @returns {{payload, type: string}}
+ */
+export const setUserData = (data) => ({
+	type: SET_USER_DATA,
+	payload: data
+})
 
 export const logout = () => async (dispatch) => {
 	dispatch({
