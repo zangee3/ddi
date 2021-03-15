@@ -50,7 +50,8 @@ router.get("/", ensureAuthenticated, function (req, res) {
 // passport.authenticate("saml", { failureRedirect: "/login/fail" }),
 
 router.get("/login", passport.authenticate("saml", { failureRedirect: "/login/fail" }), function (req, res) {
-  // const userData = {
+  console.log("/login: ")
+    // const userData = {
   //   issuer: "https://idp.myid-stg.disney.com",
   //   sessionIndex: "fPeUHuImEdxRt44iU-941zzLjZp",
   //   nameID: "e88c264b-a033-47de-b17f-514b28e17872",
@@ -84,6 +85,7 @@ router.post(
   passport.authenticate("saml", { failureRedirect: "/login/fail" }),
   function (req, res) {
     const updatedUserData = res.req.user;
+    console.log('data: ', updatedUserData)
     const filteredDataClientSide = {};
     Object.keys(updatedUserData).forEach((val) => {
       if (
